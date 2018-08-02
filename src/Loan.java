@@ -26,10 +26,10 @@ public class Loan implements Serializable {
 		this.state = LOAN_STATE.CURRENT;
 	}
 
-	
+	// Variable name was changed from D to dueDate.
 	public void checkOverDue() {
 		if (state == LOAN_STATE.CURRENT &&
-			Calendar.getInstance().Date().after(D)) {
+			Calendar.getInstance().Date().after(dueDate)) {
 			this.state = LOAN_STATE.OVER_DUE;			
 		}
 	}
