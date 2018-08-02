@@ -8,15 +8,17 @@ public class Loan implements Serializable {
 	
 	public static enum LOAN_STATE { CURRENT, OVER_DUE, DISCHARGED };
 	
-	private int ID;
-	private book B;
-	private member M;
-	private Date D;
+	private int loanId;	// ID changed to loanId
+	// book is not the correct Object type so it was renamed to Book 
+	private Book book; 	// Book object was renamed to book.
+	// Member is not the correct Object type so it was renamed to Member 
+	private Member member;	// M was changed to member for clearity. 
+	private Date dueDate;	// D was renamed to dueDate for clearity.
 	private LOAN_STATE state;
 
 	
 	public loan(int loanId, book book, member member, Date dueDate) {
-		this.ID = loanId;
+		this.loanId = loanId;
 		this.B = book;
 		this.M = member;
 		this.D = dueDate;
