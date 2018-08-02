@@ -16,12 +16,13 @@ public class Loan implements Serializable {
 	private Date dueDate;	// D was renamed to dueDate for clearity.
 	private LOAN_STATE state;
 
-	
-	public loan(int loanId, book book, member member, Date dueDate) {
-		this.loanId = loanId;
-		this.B = book;
-		this.M = member;
-		this.D = dueDate;
+	// The name of the constructor was changed to reflect the change.
+	// All the wrong parameter type was corrected to correct type.
+	public Loan(int loanId, Book book, Member member, Date dueDate) {
+		this.loanId = loanId;	// ID was changed to loanId.
+		this.book = book;		// B was changed to book.
+		this.member = member;	// M was changed to member
+		this.dueDate = dueDate;	// D was changed to dueDate	
 		this.state = LOAN_STATE.CURRENT;
 	}
 
