@@ -7,13 +7,13 @@ public class BorrowBookControl {
 	
 	private BorrowBookUI borrowBookUI; //ui renamed to borrowBookUI
 	
-	private library library; //L renemad to library
-	private member member; //M renamed to member
+	private Library library; //L renemad to library
+	private Member member; //M renamed to member
 	private CONTROL_STATE controlState; //state renamed to controlState
 	
-	private List<book> pendingBookList; //PENDING renamed to pendingBookList
-	private List<loan> completedLoanList; //COMPLETED renamed to completedLoanList
-	private book book; //B renamed to book
+	private List<Book> pendingBookList; //PENDING renamed to pendingBookList
+	private List<Loan> completedLoanList; //COMPLETED renamed to completedLoanList
+	private Book book; //B renamed to book
 	
 	public BorrowBookControl() {
 		this.library = library.INSTANCE();
@@ -65,7 +65,7 @@ public class BorrowBookControl {
 			return;
 		}
 		pendingBookList.add(book);
-		for (book tempBook : pendingBookList) {
+		for (Book tempBook : pendingBookList) {
 			borrowBookUI.display(tempBook.toString());
 		}
 		if (library.loansRemainingForMember(member) - pendingBookList.size() == 0) {
@@ -81,7 +81,7 @@ public class BorrowBookControl {
 		}
 		else {
 			borrowBookUI.display("\nFinal Borrowing List");
-			for (book tempBook : pendingBookList) {
+			for (Book tempBook : pendingBookList) {
 				borrowBookUI.display(tempBook.toString());
 			}
 			completedLoanList = new ArrayList<loan>();
@@ -95,12 +95,12 @@ public class BorrowBookControl {
 		if (!controlState.equals(CONTROL_STATE.FINALISING)) {
 			throw new RuntimeException("BorrowBookControl: cannot call commitLoans except in FINALISING state");
 		}	
-		for (book tempBook : pendingBookList) {
-			loan loan = library.issueLoan(tempBook, member);
+		for (Book tempBook : pendingBookList) {
+			Loan loan = library.issueLoan(tempBook, member);
 			completedLoanList.add(loan);			
 		}
 		borrowBookUI.display("Completed Loan Slip");
-		for (loan loan : completedLoanList) {
+		for (Loan loan : completedLoanList) {
 			borrowBookUI.display(loan.toString());
 		}
 		borrowBookUI.setState(BorrowBookUI.UI_STATE.COMPLETED);
