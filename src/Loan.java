@@ -81,18 +81,20 @@ public class Loan implements Serializable {
 		return stringBuilder.toString();	// sb was changed to stringBuilder.
 	}
 
-
-	public member Member() {
-		return M;
+	// Datatype changed from member to Member.
+	// Member() method was changed to getMember().
+	public Member getMember() {
+		return member;	// M was changed to member.
 	}
 
-
-	public book Book() {
-		return B;
+	// Datatype changed from book to Book.
+	// Book() method was changed to getBook().
+	public Book getBook() {
+		return book;	// return book instead of B.
 	}
 
-
-	public void Loan() {
+	// method Loan() was renamed to clearLoan() to reflect it property.
+	public void clearLoan() {
 		state = LOAN_STATE.DISCHARGED;		
 	}
 
