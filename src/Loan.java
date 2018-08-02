@@ -48,22 +48,37 @@ public class Loan implements Serializable {
 
 
 	public Date getDueDate() {
-		return D;
+		return dueDate;	// D was changed to dueDate.
 	}
 	
 	
 	public String toString() {
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		//sdf was changed to dateFormat 
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
-		StringBuilder sb = new StringBuilder();
-		sb.append("Loan:  ").append(ID).append("\n")
-		  .append("  Borrower ").append(M.getId()).append(" : ")
-		  .append(M.getLastName()).append(", ").append(M.getFirstName()).append("\n")
-		  .append("  Book ").append(B.ID()).append(" : " )
-		  .append(B.Title()).append("\n")
-		  .append("  DueDate: ").append(sdf.format(D)).append("\n")
-		  .append("  State: ").append(state);		
-		return sb.toString();
+		StringBuilder stringBuilder = new StringBuilder();
+		//ID was changed to loanId.
+		stringBuilder.append("Loan:  ")	// sb was changed to stringBuilder.
+					 .append(loanId)
+					 .append("\n") 
+		  			 .append("  Borrower ")
+		  			 .append(member.getId())	// M changed to member.
+		  			 .append(" : ")	
+		             .append(member.getLastName())	// M changed to member.
+		             .append(", ")
+		             .append(member.getFirstName())	// M changed to member.
+		             .append("\n")
+		             .append("  Book ")
+		             .append(book.loanId())		// B was changed to book.
+		             .append(" : " )	
+		  			 .append(book.Title())	//B was changed to book.
+		  			 .append("\n")	
+		  			 .append("  DueDate: ")
+		  			 .append(dateFormat.format(dueDate)) //sdf was changed to dateFormat 
+		  			 .append("\n")	
+		  			 .append("  State: ")
+		  			 .append(state);		
+		return stringBuilder.toString();	// sb was changed to stringBuilder.
 	}
 
 
