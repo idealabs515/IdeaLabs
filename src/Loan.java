@@ -34,14 +34,16 @@ public class Loan implements Serializable {
 		}
 	}
 
-	
+	// Logical error was corrected as state was being compared
+	// instead of assigning value tot it.
 	public boolean isOverDue() {
-		return state == LOAN_STATE.OVER_DUE;
+		return state = LOAN_STATE.OVER_DUE;
 	}
 
-	
-	public Integer getId() {
-		return ID;
+	// getID() function was returning Integer instead of int.
+	// So, it was corrected.
+	public int getId() {
+		return loanId;	// ID was changed to loanId.
 	}
 
 
