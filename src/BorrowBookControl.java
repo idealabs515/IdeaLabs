@@ -21,9 +21,9 @@ public class BorrowBookControl {
 	}
 	
 
-	public void setUI(BorrowBookUI borrowBookUI) {
+	public void setBorrowBookUI(BorrowBookUI borrowBookUI) {
 		if (!controlState.equals(CONTROL_STATE.INITIALISED)) 
-			throw new RuntimeException("BorrowBookControl: cannot call setUI except in INITIALISED state");
+			throw new RuntimeException("BorrowBookControl: cannot call setBorrowBookUI except in INITIALISED state");
 			
 		this.borrowBookUI = borrowBookUI;
 		borrowBookUI.setState(BorrowBookUI.UI_STATE.READY);
@@ -31,7 +31,7 @@ public class BorrowBookControl {
 	}
 
 		
-	public void Swiped(int memberId) {
+	public void cardSwiped(int memberId) {
 		if (!controlState.equals(CONTROL_STATE.READY)) 
 			throw new RuntimeException("BorrowBookControl: cannot call cardSwiped except in READY state");
 			
@@ -50,7 +50,7 @@ public class BorrowBookControl {
 			borrowBookUI.setState(BorrowBookUI.UI_STATE.RESTRICTED); }}
 	
 	
-	public void Scanned(int bookId) {
+	public void bookScanned(int bookId) {
 		book = null;
 		if (!controlState.equals(CONTROL_STATE.SCANNING)) {
 			throw new RuntimeException("BorrowBookControl: cannot call bookScanned except in SCANNING state");
@@ -75,7 +75,7 @@ public class BorrowBookControl {
 	}
 	
 	
-	public void Complete() {
+	public void complete() {
 		if (pendingBookList.size() == 0) {
 			cancel();
 		}
