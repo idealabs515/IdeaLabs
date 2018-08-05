@@ -3,7 +3,16 @@ import java.util.List;
 
 public class BorrowBookControl {
 	//enum definition has been carried to top of the class
-	private enum ControlState { INITIALISED, READY, RESTRICTED, SCANNING, IDENTIFIED, FINALISING, COMPLETED, CANCELLED }; //CONTROL_STATE renamed to ControlState
+	private enum ControlState { //CONTROL_STATE renamed to ControlState
+		INITIALISED, 
+		READY, 
+		RESTRICTED, 
+		SCANNING, 
+		IDENTIFIED, 
+		FINALISING, 
+		COMPLETED, 
+		CANCELLED 
+	}; //Indentation fix
 	
 	private BorrowBookUI borrowBookUI; //ui renamed to borrowBookUI
 	
@@ -47,7 +56,9 @@ public class BorrowBookControl {
 		else 
 		{
 			borrowBookUI.display("Member cannot borrow at this time");
-			borrowBookUI.setState(BorrowBookUI.UI_STATE.RESTRICTED); }}
+			borrowBookUI.setState(BorrowBookUI.UI_STATE.RESTRICTED); 
+		}
+	}
 	
 	
 	public void bookScanned(int bookId) {
