@@ -81,7 +81,7 @@ public class BorrowBookControl {
 		}
 		if (library.loansRemainingForMember(member) - pendingBookList.size() == 0) {
 			borrowBookUI.display("Loan limit reached");
-			Complete();
+			complete();
 		}
 	}
 	
