@@ -5,8 +5,12 @@ import java.util.Date;
 @SuppressWarnings("serial")
 // The class name was changed from loan to Loan
 public class Loan implements Serializable {
-	
-	public static enum LOAN_STATE { CURRENT, OVER_DUE, DISCHARGED };
+	// enum name changed from LOAN_STATE to LoanState
+	public static enum LoanState { //Formatting changed.
+		CURRENT,
+		OVER_DUE, 
+		DISCHARGED 
+	};
 	
 	private int loanId;	// ID changed to loanId
 	// book is not the correct Object type so it was renamed to Book 
@@ -14,7 +18,7 @@ public class Loan implements Serializable {
 	// Member is not the correct Object type so it was renamed to Member 
 	private Member member;	// M was changed to member for clearity. 
 	private Date dueDate;	// D was renamed to dueDate for clearity.
-	private LOAN_STATE state;
+	private LoanState state;
 
 	// The name of the constructor was changed to reflect the change.
 	// All the wrong parameter type was corrected to correct type.
@@ -23,21 +27,21 @@ public class Loan implements Serializable {
 		this.book = book;		// B was changed to book.
 		this.member = member;	// M was changed to member
 		this.dueDate = dueDate;	// D was changed to dueDate	
-		this.state = LOAN_STATE.CURRENT;
+		this.state = LoanState.CURRENT;
 	}
 
 	// Variable name was changed from D to dueDate.
 	public void checkOverDue() {
-		if (state == LOAN_STATE.CURRENT &&
+		if (state == LoanState.CURRENT &&
 			Calendar.getInstance().Date().after(dueDate)) {
-			this.state = LOAN_STATE.OVER_DUE;			
+			this.state = LoanState.OVER_DUE;			
 		}
 	}
         //@Vaishnav(Review): The value should be reverted to the original.
 	// Logical error was corrected as state was being compared
 	// instead of assigning value tot it.
 	public boolean isOverDue() {
-		return state = LOAN_STATE.OVER_DUE;
+		return state = LoanState.OVER_DUE;
 	}
 
 	//@Vaishnav(Review): The getID method should be reverted to Integer type
@@ -96,7 +100,7 @@ public class Loan implements Serializable {
 
 	// method Loan() was renamed to clearLoan() to reflect it property.
 	public void clearLoan() {
-		state = LOAN_STATE.DISCHARGED;		
+		state = LoanState.DISCHARGED;		
 	}
 
 }
