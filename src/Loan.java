@@ -2,6 +2,11 @@ import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+//@author	Bikram Shrestha
+//@reviewer	Vaishnav Reddy Chitty
+//@mediator	Huseyin Caliskan.
+
+
 @SuppressWarnings("serial")
 // The class name was changed from loan to Loan
 public class Loan implements Serializable {
