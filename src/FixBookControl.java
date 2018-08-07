@@ -1,6 +1,9 @@
 public class FixBookControl {
 	
-	
+	//@author Muhammad Ahmed Shoaib
+	//@reviewer Huseyin Caliskan
+	//@mediator Bikram Shrestha
+
 	private enum ControlState { INITIALISED, READY, FIXING }; //the enum named changed from CONTROL_STATE to ControlState
 	private ControlState controlState; //changed variable name from state to controlState
 	private FixBookUI fixBookUI; //changed variable name from ui to fixBookUI
