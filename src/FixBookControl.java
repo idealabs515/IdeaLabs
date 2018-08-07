@@ -1,9 +1,9 @@
 public class FixBookControl {
 	
-	private FixBookUI fixBookUI;
-	private enum CONTROL_STATE { INITIALISED, READY, FIXING };
-	private CONTROL_STATE state;
 	
+	private enum ControlState { INITIALISED, READY, FIXING };
+	private ControlState state;
+	private FixBookUI fixBookUI;
 	private Library library;
 	private Book currentBook;
 
