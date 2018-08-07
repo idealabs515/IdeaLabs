@@ -1,24 +1,22 @@
 public class FixBookControl {
-	//+HC -Please add comments where you made changes
 	
 	
-	private enum ControlState { INITIALISED, READY, FIXING };
-	//+HC -Must be changed according to naming conventions
-	private ControlState state;
-	private FixBookUI fixBookUI;
-	private Library library;
-	private Book currentBook;
+	private enum ControlState { INITIALISED, READY, FIXING }; //the enum named changed from CONTROL_STATE to ControlState
+	private ControlState controlState; //changed variable name from state to controlState
+	private FixBookUI fixBookUI; //changed variable name from ui to fixBookUI
+	private Library library; //changed from library to Library
+	private Book currentBook; //changed from book to Book
 
 
 	public FixBookControl() {
-		//+HC -Must be changed according to naming conventions
-		this.library = library.INSTANCE();
+		
+		this.library = library.getInstance(); // changed from library.INSTANCE() to library.getInstance()
 		state = ControlState.INITIALISED;
 	}
 	
 	
-	//+HC -Must be changed according to naming conventions
-	public void setUI(FixBookUI fixBookUI) {
+	
+	public void setFixBookUI(FixBookUI fixBookUI) { //changed from setUI to setFixBookUI
 		if (!state.equals(ControlState.INITIALISED)) {
 			throw new RuntimeException("FixBookControl: cannot call setUI except in INITIALISED state");
 		}	
@@ -32,15 +30,15 @@ public class FixBookControl {
 		if (!state.equals(ControlState.READY)) {
 			throw new RuntimeException("FixBookControl: cannot call bookScanned except in READY state");
 		}	
-		//+HC -Must be changed according to naming conventions
-		currentBook = library.Book(bookId);
+		
+		currentBook = library.setBook(bookId);
 		
 		if (currentBook == null) {
 			fixBookUI.display("Invalid bookId");
 			return;
 		}
-		//+HC -Must be changed according to naming conventions
-		if (!currentBook.Damaged()) {
+		//changed from currentBook.Damaged to currentBook.isDamaged()
+		if (!currentBook.isDamaged()) {
 			fixBookUI.display("\"Book has not been damaged");
 			return;
 		}
@@ -70,9 +68,5 @@ public class FixBookControl {
 		fixBookUI.setState(FixBookUI.UI_STATE.COMPLETED);		
 	}
 
-
-	//+HC -There should be only 2 space lines
-
-
-
+	
 }
