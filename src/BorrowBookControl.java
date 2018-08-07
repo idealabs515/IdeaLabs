@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.List;
-
+//@author	Huseyin Caliskan
+//@reviewer	Huhammad Ahmed Shoaib
+//@mediator	Bikram Shrestha 
 public class BorrowBookControl {
 	//enum definition has been carried to top of the class
 	private enum ControlState { //CONTROL_STATE renamed to ControlState
