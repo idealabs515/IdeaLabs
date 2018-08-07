@@ -1,7 +1,9 @@
 public class FixBookControl {
+	//+HC -Please add comments where you made changes
 	
 	
 	private enum ControlState { INITIALISED, READY, FIXING };
+	//+HC -Must be changed according to naming conventions
 	private ControlState state;
 	private FixBookUI fixBookUI;
 	private Library library;
@@ -9,11 +11,13 @@ public class FixBookControl {
 
 
 	public FixBookControl() {
+		//+HC -Must be changed according to naming conventions
 		this.library = library.INSTANCE();
 		state = ControlState.INITIALISED;
 	}
 	
 	
+	//+HC -Must be changed according to naming conventions
 	public void setUI(FixBookUI fixBookUI) {
 		if (!state.equals(ControlState.INITIALISED)) {
 			throw new RuntimeException("FixBookControl: cannot call setUI except in INITIALISED state");
@@ -28,12 +32,14 @@ public class FixBookControl {
 		if (!state.equals(ControlState.READY)) {
 			throw new RuntimeException("FixBookControl: cannot call bookScanned except in READY state");
 		}	
+		//+HC -Must be changed according to naming conventions
 		currentBook = library.Book(bookId);
 		
 		if (currentBook == null) {
 			fixBookUI.display("Invalid bookId");
 			return;
 		}
+		//+HC -Must be changed according to naming conventions
 		if (!currentBook.Damaged()) {
 			fixBookUI.display("\"Book has not been damaged");
 			return;
@@ -65,7 +71,7 @@ public class FixBookControl {
 	}
 
 
-
+	//+HC -There should be only 2 space lines
 
 
 
