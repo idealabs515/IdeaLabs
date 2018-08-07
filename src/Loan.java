@@ -37,17 +37,23 @@ public class Loan implements Serializable {
 			this.state = LoanState.OVER_DUE;			
 		}
 	}
-        //@Vaishnav(Review): The value should be reverted to the original.
+    // assigned sign was changed back to == comparision as suggested by @Vaishnav
+    /*    
+    //@Vaishnav(Review): The value should be reverted to the original.
 	// Logical error was corrected as state was being compared
-	// instead of assigning value tot it.
+	// instead of assigning value tot it. 
+	*/
 	public boolean isOverDue() {
-		return state = LoanState.OVER_DUE;
+		return state == LoanState.OVER_DUE;
 	}
 
+	//Reverted back to Integer as suggested by @Vaishnav
+	/*
 	//@Vaishnav(Review): The getID method should be reverted to Integer type
 	// getID() function was returning Integer instead of int.
 	// So, it was corrected.
-	public int getId() {
+	*/
+	public Integer getId() {
 		return loanId;	// ID was changed to loanId.
 	}
 
