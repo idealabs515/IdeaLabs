@@ -1,10 +1,18 @@
+/**
+The below File is being edited by Chitty vaishnav Reddy
+@Editor:Chitty Vaishnav Reddy
+@Version-0
+*/
 public class ReturnBookControl {
 
 	private ReturnBookUI ui;
 	private enum CONTROL_STATE { INITIALISED, READY, INSPECTING };
 	private CONTROL_STATE state;
 	
-	private library library;
+	//private library library;--> version-0
+	//After Editing Class names should be Capital
+	private Library library
+	
 	private loan currentLoan;
 	
 
