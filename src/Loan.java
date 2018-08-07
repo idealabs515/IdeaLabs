@@ -33,13 +33,14 @@ public class Loan implements Serializable {
 			this.state = LOAN_STATE.OVER_DUE;			
 		}
 	}
-
+        //@Vaishnav(Review): The value should be reverted to the original.
 	// Logical error was corrected as state was being compared
 	// instead of assigning value tot it.
 	public boolean isOverDue() {
 		return state = LOAN_STATE.OVER_DUE;
 	}
 
+	//@Vaishnav(Review): The getID method should be reverted to Integer type
 	// getID() function was returning Integer instead of int.
 	// So, it was corrected.
 	public int getId() {
