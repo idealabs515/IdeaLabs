@@ -14,36 +14,42 @@ public class BorrowBookControl {
 		CANCELLED 
 	}; //Indentation fix
 	
-	private BorrowBookUI borrowBookUI; //ui renamed to borrowBookUI
 	
+	//instance variable declarations
+	private BorrowBookUI borrowBookUI; //ui renamed to borrowBookUI
 	private Library library; //L renemad to library
 	private Member member; //M renamed to member
 	private ControlState controlState; //state renamed to controlState
-	
 	private List<Book> pendingBookList; //PENDING renamed to pendingBookList
 	private List<Loan> completedLoanList; //COMPLETED renamed to completedLoanList
 	private Book book; //B renamed to book
 	
+	
+	//Default Constructor
 	public BorrowBookControl() {
 		this.library = library.INSTANCE();
 		controlState = ControlState.INITIALISED;
 	}
 	
-
+	
+	//setter method for borrowBookUI variable
 	public void setBorrowBookUI(BorrowBookUI borrowBookUI) {
-		if (!controlState.equals(ControlState.INITIALISED)) 
+		if (!controlState.equals(ControlState.INITIALISED)) {
 			throw new RuntimeException("BorrowBookControl: cannot call setBorrowBookUI except in INITIALISED state");
-			
+		}
+		
 		this.borrowBookUI = borrowBookUI;
 		borrowBookUI.setState(BorrowBookUI.UI_STATE.READY);
 		controlState = ControlState.READY;		
 	}
 
-		
+	
+	//operational public methods
 	public void cardSwiped(int memberId) {
-		if (!controlState.equals(ControlState.READY)) 
+		if (!controlState.equals(ControlState.READY)) {
 			throw new RuntimeException("BorrowBookControl: cannot call cardSwiped except in READY state");
-			
+		}
+		
 		member = library.getMember(memberId);
 		if (member == null) {
 			borrowBookUI.display("Invalid memberId");
@@ -52,7 +58,8 @@ public class BorrowBookControl {
 		if (library.memberCanBorrow(member)) {
 			pendingBookList = new ArrayList<>();
 			borrowBookUI.setState(BorrowBookUI.UI_STATE.SCANNING);
-			controlState = ControlState.SCANNING; }
+			controlState = ControlState.SCANNING; 
+		}
 		else 
 		{
 			borrowBookUI.display("Member cannot borrow at this time");
