@@ -32,6 +32,7 @@ public class BorrowBookControl {
 	}
 	
 	
+	
 	//setter method for borrowBookUI variable
 	public void setBorrowBookUI(BorrowBookUI borrowBookUI) {
 		if (!controlState.equals(ControlState.INITIALISED)) {
