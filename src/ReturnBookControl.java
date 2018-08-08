@@ -16,8 +16,8 @@ public class ReturnBookControl {
 	//After Editing Class names should be Capital
 	private Loan currentLoan;
 	 
-
-	public ReturnBookControl() {
+        //method name shiud start with small case
+	public returnBookControl() {
 		this.library = library.INSTANCE();
 		state = ControlState.INITIALISED;
 	}
