@@ -75,7 +75,7 @@ public class Loan implements Serializable {
 		             .append("  Book ")
 		             .append(book.loanId())		// B was changed to book.
 		             .append(" : " )	
-		  			 .append(book.Title())	//B was changed to book.
+		  			 .append(book.bookTitle())	//B was changed to book and Title() was changed to bookTitle()
 		  			 .append("\n")	
 		  			 .append("  DueDate: ")
 		  			 .append(dateFormat.format(dueDate)) //sdf was changed to dateFormat 
