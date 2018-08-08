@@ -7,7 +7,7 @@ The below File is being edited by Chitty vaishnav Reddy
 
 public class ReturnBookControl {
 
-	private ReturnBookUI ui; //bikram - suggestion ui to userInterface 
+	private ReturnBookUI ui; //bikram - suggestion ui to returnBookUI 
 	//Enum name should be Camel case it was Captital
 	private enum ControlState { INITIALISED, READY, INSPECTING };
 	private CONTROL_STATE state;
