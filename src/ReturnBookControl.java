@@ -13,8 +13,8 @@ public class ReturnBookControl {
 	//private library library;--> version-0
 	//After Editing Class names should be Capital
 	private Library library
-	
-	private loan currentLoan;
+	//After Editing Class names should be Capital
+	private Loan currentLoan;
 	
 
 	public ReturnBookControl() {
