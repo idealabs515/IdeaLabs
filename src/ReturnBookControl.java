@@ -3,20 +3,22 @@ The below File is being edited by Chitty vaishnav Reddy
 @Editor:Chitty Vaishnav Reddy
 @Version-1.0
 */
+//@Reviewer Bikram Shrestha
+
 public class ReturnBookControl {
 
-	private ReturnBookUI ui;
+	private ReturnBookUI ui; //bikram - suggestion ui to userInterface 
 	//Enum name should be Camel case it was Captital
 	private enum ControlState { INITIALISED, READY, INSPECTING };
 	private CONTROL_STATE state;
 	
 	//private library library;--> version-0
 	//After Editing Class names should be Capital
-	private Library library
+	private Library library 	//bikram - missing ';'.
 	//After Editing Class names should be Capital
 	private Loan currentLoan;
 	 
-        //method name shiud start with small case
+        //method name shiud start with small case //bikram edit comment
 	public ReturnBookControl() {
 		this.library = library.INSTANCE();
 		state = ControlState.INITIALISED;
@@ -43,7 +45,7 @@ public class ReturnBookControl {
 			ui.display("Invalid Book Id");
 			return;
 		}
-		if (!currentBook.On_loan()) {
+		if (!currentBook.On_loan()) { //bikram something is wrong with method name On_loan()
 			ui.display("Book has not been borrowed");
 			return;
 		}		
