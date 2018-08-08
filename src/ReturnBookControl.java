@@ -15,7 +15,7 @@ public class ReturnBookControl {
 	private Library library
 	//After Editing Class names should be Capital
 	private Loan currentLoan;
-	
+	 
 
 	public ReturnBookControl() {
 		this.library = library.INSTANCE();
