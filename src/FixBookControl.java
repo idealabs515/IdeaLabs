@@ -5,6 +5,7 @@ public class FixBookControl {
 	//@mediator Bikram Shrestha
 
 	private enum ControlState { INITIALISED, READY, FIXING }; //the enum named changed from CONTROL_STATE to ControlState
+	//+HC -After changing variable name state to controlState please change the variable used throughout the class
 	private ControlState controlState; //changed variable name from state to controlState
 	private FixBookUI fixBookUI; //changed variable name from ui to fixBookUI
 	private Library library; //changed from library to Library
@@ -33,7 +34,7 @@ public class FixBookControl {
 		if (!state.equals(ControlState.READY)) {
 			throw new RuntimeException("FixBookControl: cannot call bookScanned except in READY state");
 		}	
-		
+		//+HC -The method returns a Book reference so it must be renamed to getBook
 		currentBook = library.setBook(bookId);
 		
 		if (currentBook == null) {
