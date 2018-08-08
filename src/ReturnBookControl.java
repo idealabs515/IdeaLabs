@@ -17,7 +17,7 @@ public class ReturnBookControl {
 	private Loan currentLoan;
 	 
         //method name shiud start with small case
-	public returnBookControl() {
+	public ReturnBookControl() {
 		this.library = library.INSTANCE();
 		state = ControlState.INITIALISED;
 	}
