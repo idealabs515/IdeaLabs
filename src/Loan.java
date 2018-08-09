@@ -2,48 +2,52 @@ import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+//@author	Bikram Shrestha
+//@reviewer	Vaishnav Reddy Chitty
+//@mediator	Huseyin Caliskan.
+
+
 @SuppressWarnings("serial")
 // The class name was changed from loan to Loan
 public class Loan implements Serializable {
+	// enum name changed from LOAN_STATE to LoanState
+	public static enum LoanState { //Formatting changed.
+		CURRENT,
+		OVER_DUE, 
+		DISCHARGED 
+	};
 	
-	public static enum LOAN_STATE { CURRENT, OVER_DUE, DISCHARGED };
-	
-	private int loanId;	// ID changed to loanId
+	private int id;	// ID changed to id
 	// book is not the correct Object type so it was renamed to Book 
 	private Book book; 	// Book object was renamed to book.
 	// Member is not the correct Object type so it was renamed to Member 
 	private Member member;	// M was changed to member for clearity. 
 	private Date dueDate;	// D was renamed to dueDate for clearity.
-	private LOAN_STATE state;
+	private LoanState state;
 
 	// The name of the constructor was changed to reflect the change.
 	// All the wrong parameter type was corrected to correct type.
-	public Loan(int loanId, Book book, Member member, Date dueDate) {
-		this.loanId = loanId;	// ID was changed to loanId.
+	public Loan(int id, Book book, Member member, Date dueDate) {
+		this.id = id;	// ID was changed to id.
 		this.book = book;		// B was changed to book.
 		this.member = member;	// M was changed to member
 		this.dueDate = dueDate;	// D was changed to dueDate	
-		this.state = LOAN_STATE.CURRENT;
+		this.state = LoanState.CURRENT;
 	}
 
 	// Variable name was changed from D to dueDate.
 	public void checkOverDue() {
-		if (state == LOAN_STATE.CURRENT &&
+		if (state == LoanState.CURRENT &&
 			Calendar.getInstance().Date().after(dueDate)) {
-			this.state = LOAN_STATE.OVER_DUE;			
+			this.state = LoanState.OVER_DUE;			
 		}
 	}
-
-	// Logical error was corrected as state was being compared
-	// instead of assigning value tot it.
 	public boolean isOverDue() {
-		return state = LOAN_STATE.OVER_DUE;
+		return state == LoanState.OVER_DUE;
 	}
 
-	// getID() function was returning Integer instead of int.
-	// So, it was corrected.
-	public int getId() {
-		return loanId;	// ID was changed to loanId.
+	public Integer getId() { 
+		return id;	// ID was changed to id.
 	}
 
 
@@ -57,21 +61,21 @@ public class Loan implements Serializable {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
 		StringBuilder stringBuilder = new StringBuilder();
-		//ID was changed to loanId.
+		//ID was changed to id.
 		stringBuilder.append("Loan:  ")	// sb was changed to stringBuilder.
-					 .append(loanId)
+					 .append(id)
 					 .append("\n") 
 		  			 .append("  Borrower ")
-		  			 .append(member.getId())	// M changed to member.
+		  			 .append(member.getId())	// M changed to member and M.ID() changed to member.getId().
 		  			 .append(" : ")	
 		             .append(member.getLastName())	// M changed to member.
 		             .append(", ")
 		             .append(member.getFirstName())	// M changed to member.
 		             .append("\n")
 		             .append("  Book ")
-		             .append(book.loanId())		// B was changed to book.
+		             .append(book.getId())		// B was changed to book and B.ID() changed to book.getId()
 		             .append(" : " )	
-		  			 .append(book.Title())	//B was changed to book.
+		  			 .append(book.getTitle())	//B was changed to book and Title() was changed to getTitle()
 		  			 .append("\n")	
 		  			 .append("  DueDate: ")
 		  			 .append(dateFormat.format(dueDate)) //sdf was changed to dateFormat 
@@ -95,7 +99,7 @@ public class Loan implements Serializable {
 
 	// method Loan() was renamed to clearLoan() to reflect it property.
 	public void clearLoan() {
-		state = LOAN_STATE.DISCHARGED;		
+		state = LoanState.DISCHARGED;		
 	}
 
 }
