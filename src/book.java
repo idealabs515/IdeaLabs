@@ -2,7 +2,6 @@ import java.io.Serializable;
 
 
 @SuppressWarnings("serial")
-//book renamed to Book
 public class book implements Serializable {
 	
 	//T renamed to title
@@ -17,7 +16,7 @@ public class book implements Serializable {
 	private enum STATE { AVAILABLE, ON_LOAN, DAMAGED, RESERVED };
 	private STATE state;
 	
-	//book renamed to Book
+	
 	public book(String author, String title, String callNo, int id) {
 		//A renamed to author
 		this.author = author;
