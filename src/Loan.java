@@ -46,7 +46,7 @@ public class Loan implements Serializable {
 		return state == LoanState.OVER_DUE;
 	}
 
-	public Integer getId() {
+	public Integer getLoanId() { //loan id was changed to getLoanId()
 		return loanId;	// ID was changed to loanId.
 	}
 
@@ -66,14 +66,14 @@ public class Loan implements Serializable {
 					 .append(loanId)
 					 .append("\n") 
 		  			 .append("  Borrower ")
-		  			 .append(member.getId())	// M changed to member.
+		  			 .append(member.getMemberId())	// M changed to member and M.ID() changed to member.getMemeberId().
 		  			 .append(" : ")	
 		             .append(member.getLastName())	// M changed to member.
 		             .append(", ")
 		             .append(member.getFirstName())	// M changed to member.
 		             .append("\n")
 		             .append("  Book ")
-		             .append(book.loanId())		// B was changed to book.
+		             .append(book.getBookId())		// B was changed to book and B.ID() changed to book.getBookId()
 		             .append(" : " )	
 		  			 .append(book.bookTitle())	//B was changed to book and Title() was changed to bookTitle()
 		  			 .append("\n")	
