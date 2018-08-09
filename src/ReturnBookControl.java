@@ -1,20 +1,20 @@
 /**
 The below File is being edited by Chitty vaishnav Reddy
 @Editor:Chitty Vaishnav Reddy
-@Version-1.0
+@Version-1.1
 */
 //@Reviewer Bikram Shrestha
 
 public class ReturnBookControl {
 
-	private ReturnBookUI ui; //bikram - suggestion ui to returnBookUI 
+	private ReturnBookUI ui; //bikram - suggestion ui to returnBookUI //Since its a Private variable ui should be fine
 	//Enum name should be Camel case it was Captital
 	private enum ControlState { INITIALISED, READY, INSPECTING };
 	private CONTROL_STATE state;
 	
 	//private library library;--> version-0
 	//After Editing Class names should be Capital
-	private Library library 	//bikram - missing ';'.
+	private Library library; 	
 	//After Editing Class names should be Capital
 	private Loan currentLoan;
 	 
@@ -45,7 +45,7 @@ public class ReturnBookControl {
 			ui.display("Invalid Book Id");
 			return;
 		}
-		if (!currentBook.On_loan()) { //bikram something is wrong with method name On_loan()
+		if (!currentBook.onLoan()) { //bikram something is wrong with method name On_loan()//Edited
 			ui.display("Book has not been borrowed");
 			return;
 		}		
