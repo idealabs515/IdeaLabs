@@ -75,7 +75,7 @@ public class Loan implements Serializable {
 		             .append("  Book ")
 		             .append(book.getBookId())		// B was changed to book and B.ID() changed to book.getBookId()
 		             .append(" : " )	
-		  			 .append(book.bookTitle())	//B was changed to book and Title() was changed to bookTitle()
+		  			 .append(book.getBookTitle())	//B was changed to book and Title() was changed to getBookTitle()
 		  			 .append("\n")	
 		  			 .append("  DueDate: ")
 		  			 .append(dateFormat.format(dueDate)) //sdf was changed to dateFormat 
