@@ -17,7 +17,7 @@ public class Loan implements Serializable {
 		DISCHARGED 
 	};
 	
-	private int loanId;	// ID changed to loanId
+	private int id;	// ID changed to id
 	// book is not the correct Object type so it was renamed to Book 
 	private Book book; 	// Book object was renamed to book.
 	// Member is not the correct Object type so it was renamed to Member 
@@ -27,8 +27,8 @@ public class Loan implements Serializable {
 
 	// The name of the constructor was changed to reflect the change.
 	// All the wrong parameter type was corrected to correct type.
-	public Loan(int loanId, Book book, Member member, Date dueDate) {
-		this.loanId = loanId;	// ID was changed to loanId.
+	public Loan(int id, Book book, Member member, Date dueDate) {
+		this.id = id;	// ID was changed to id.
 		this.book = book;		// B was changed to book.
 		this.member = member;	// M was changed to member
 		this.dueDate = dueDate;	// D was changed to dueDate	
@@ -46,8 +46,8 @@ public class Loan implements Serializable {
 		return state == LoanState.OVER_DUE;
 	}
 
-	public Integer getLoanId() { //loan id was changed to getLoanId()
-		return loanId;	// ID was changed to loanId.
+	public Integer getId() { 
+		return id;	// ID was changed to id.
 	}
 
 
@@ -61,21 +61,21 @@ public class Loan implements Serializable {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
 		StringBuilder stringBuilder = new StringBuilder();
-		//ID was changed to loanId.
+		//ID was changed to id.
 		stringBuilder.append("Loan:  ")	// sb was changed to stringBuilder.
-					 .append(loanId)
+					 .append(id)
 					 .append("\n") 
 		  			 .append("  Borrower ")
-		  			 .append(member.getMemberId())	// M changed to member and M.ID() changed to member.getMemeberId().
+		  			 .append(member.getId())	// M changed to member and M.ID() changed to member.getId().
 		  			 .append(" : ")	
 		             .append(member.getLastName())	// M changed to member.
 		             .append(", ")
 		             .append(member.getFirstName())	// M changed to member.
 		             .append("\n")
 		             .append("  Book ")
-		             .append(book.getBookId())		// B was changed to book and B.ID() changed to book.getBookId()
+		             .append(book.getId())		// B was changed to book and B.ID() changed to book.getId()
 		             .append(" : " )	
-		  			 .append(book.getBookTitle())	//B was changed to book and Title() was changed to getBookTitle()
+		  			 .append(book.getTitle())	//B was changed to book and Title() was changed to getTitle()
 		  			 .append("\n")	
 		  			 .append("  DueDate: ")
 		  			 .append(dateFormat.format(dueDate)) //sdf was changed to dateFormat 
