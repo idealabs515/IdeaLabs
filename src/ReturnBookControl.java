@@ -4,21 +4,20 @@ The below File is being edited by Chitty vaishnav Reddy
 @Version-1.1
 */
 //@Reviewer Bikram Shrestha
-
+//@Moderater M.Ahemed
 public class ReturnBookControl {
 
-	private ReturnBookUI ui; //bikram - suggestion ui to returnBookUI //Since its a Private variable ui should be fine
+	private ReturnBookUI ui;
 	//Enum name should be Camel case it was Captital
 	private enum ControlState { INITIALISED, READY, INSPECTING };
-	private CONTROL_STATE state;
+	private ControlState state;
 	
 	//private library library;--> version-0
 	//After Editing Class names should be Capital
 	private Library library; 	
 	//After Editing Class names should be Capital
 	private Loan currentLoan;
-	 
-        //method name shiud start with small case //bikram edit comment
+	
 	public ReturnBookControl() {
 		this.library = library.INSTANCE();
 		state = ControlState.INITIALISED;
