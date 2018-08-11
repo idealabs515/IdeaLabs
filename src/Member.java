@@ -1,6 +1,6 @@
 /**
-Version-0.1
-@Editer:Chitty Vaishnav Reddy
+Version-0.2
+@Editer:ChittyVaishnavReddy
 
 */
 import java.io.Serializable;
@@ -43,7 +43,7 @@ public class Member implements Serializable {
 		  .append(String.format("  Fines Owed :  $%.2f", fines))
 		  .append("\n");
 		
-		for (Loan loan : LNS.values()) {
+		for (Loan loan : loans.values()) {
 			sb.append(loan).append("\n");
 		}		  
 		return sb.toString();
@@ -56,23 +56,23 @@ public class Member implements Serializable {
 
 	
 	public List<loan> getLoans() {
-		return new ArrayList<loan>(LNS.values());
+		return new ArrayList<loan>(loans.values());
 	}
 
 	
 	public int getNumberOfCurrentLoans() {
-		return LNS.size();
+		return loans.size();
 	}
 
 	
 	public double getFinesOwed() {
-		return FINES;
+		return fines;
 	}
 
 	
 	public void takeOutLoan(loan loan) {
-		if (!LNS.containsKey(loan.getId())) {
-			LNS.put(loan.getId(), loan);
+		if (!loans.containsKey(loan.getId())) {
+			loans.put(loan.getId(), loan);
 		}
 		else {
 			throw new RuntimeException("Duplicate loan added to member");
@@ -81,17 +81,17 @@ public class Member implements Serializable {
 
 	
 	public String getLastName() {
-		return LN;
+		return lastName;
 	}
 
 	
 	public String getFirstName() {
-		return FN;
+		return firstName;
 	}
 
 
 	public void addFine(double fine) {
-		FINES += fine;
+		fines += fine;
 	}
 	
 	public double payFine(double amount) {
