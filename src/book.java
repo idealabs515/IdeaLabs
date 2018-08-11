@@ -6,6 +6,15 @@ import java.io.Serializable;
 public class Book implements Serializable {
 	
 	
+	//STATE renamed to State
+	private enum State { 
+		AVAILABLE, 
+		ON_LOAN, 
+		DAMAGED, 
+		RESERVED 
+	};
+	
+	
 	//T renamed to title
 	private String T;
 	//A renamed to author
@@ -15,10 +24,10 @@ public class Book implements Serializable {
 	//ID renamed to id
 	private int ID;
 	
-	//STATE renamed to State
-	private enum State { AVAILABLE, ON_LOAN, DAMAGED, RESERVED };
+
 	//STATE type renamed to State
 	private State state;
+	
 	
 	//book renamed to Book
 	public Book(String author, String title, String callNo, int id) {
@@ -34,6 +43,7 @@ public class Book implements Serializable {
 		this.state = State.AVAILABLE;
 	}
 	
+	
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		//ID renamed to id
@@ -48,12 +58,14 @@ public class Book implements Serializable {
 		
 		return sb.toString();
 	}
+	
 
 	//ID method renamed to getId()
 	public Integer getId() {
 		//ID renamed to id
 		return id;
 	}
+	
 
 	//Title method renamed to getTitle()
 	public String getTitle() {
@@ -96,6 +108,7 @@ public class Book implements Serializable {
 		}
 		
 	}
+	
 
 	//Return method renamed to return()
 	//DAMAGED renamed to isDamaged
