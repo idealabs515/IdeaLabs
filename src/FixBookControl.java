@@ -28,12 +28,11 @@ public class FixBookControl {
 		controlState = ControlState.READY;		
 	}
 
-
-	public void bookScanned(int bookId) {
+	//method bookScanned changed to getBook
+	public void getBook(int bookId) {
 		if (!controlState.equals(ControlState.READY)) {
 			throw new RuntimeException("FixBookControl: cannot call bookScanned except in READY state");
 		}	
-		//+HC -The method returns a Book reference so it must be renamed to getBook
 		currentBook = library.setBook(bookId);
 		
 		if (currentBook == null) {
