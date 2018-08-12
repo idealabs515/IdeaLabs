@@ -25,7 +25,7 @@ public class library implements Serializable {
 	private static final double MAX_FINES_OWED = 5.0;
 	private static final double DAMAGE_FEE = 2.0;
 	
-	private static Library library;
+	private static Library library; // changed self to library 
 	private int bookID; //changed BID to bookID
 	private int memberID; //changed MID to memberID
 	private int loanID; // changed LID to loadID
@@ -50,7 +50,7 @@ public class library implements Serializable {
 	}
 
 	
-	public static synchronized library INSTANCE() {		
+	public static synchronized Library INSTANCE() {		
 		if (library == null) {
 			Path path = Paths.get(LIBRARY_FILE);			
 			if (Files.exists(path)) {	
@@ -71,12 +71,12 @@ public class library implements Serializable {
 
 	
 	public static synchronized void SAVE() {
-		if (self != null) {
-			self.loadDate = Calendar.getInstance().Date();
-			try (ObjectOutputStream lof = new ObjectOutputStream(new FileOutputStream(LIBRARY_FILE));) {
-				lof.writeObject(self);
-				lof.flush();
-				lof.close();	
+		if (library != null) {
+			library.loadDate = Calendar.getInstance().Date();
+			try (ObjectOutputStream libraryFile = new ObjectOutputStream(new FileOutputStream(LIBRARY_FILE));) {
+				libraryFile.writeObject(library);
+				libraryFile.flush();
+				libraryFile.close();	
 			}
 			catch (Exception e) {
 				throw new RuntimeException(e);
