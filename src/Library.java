@@ -26,16 +26,16 @@ public class library implements Serializable {
 	private static final double DAMAGE_FEE = 2.0;
 	
 	private static library self;
-	private int BID;
-	private int MID;
-	private int LID;
+	private int bookID; //changed BID to bookID
+	private int memberID; //changed MID to memberID
+	private int loanID; // changed LID to loadID
 	private Date loadDate;
-	
-	private Map<Integer, book> catalog;
-	private Map<Integer, member> members;
-	private Map<Integer, loan> loans;
-	private Map<Integer, loan> currentLoans;
-	private Map<Integer, book> damagedBooks;
+	//Capitalized the model classes below Book, Member and Loan
+	private Map<Integer, Book> catalog;
+	private Map<Integer, Member> members;
+	private Map<Integer, Loan> loans;
+	private Map<Integer, Loan> currentLoans;
+	private Map<Integer, Book> damagedBooks;
 	
 
 	private library() {
