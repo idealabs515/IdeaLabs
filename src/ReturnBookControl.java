@@ -4,13 +4,13 @@ The below File is being edited by Chitty vaishnav Reddy
 @Version-1.1
 */
 //@Reviewer Bikram Shrestha
-//@Moderater M.Ahemed
+//@Moderater Muhammad Ahmed Shoaib
 public class ReturnBookControl {
 
-	private ReturnBookUI ui;
+	private ReturnBookUI ui; //+MAS: change variable ui to returnBookUI
 	//Enum name should be Camel case it was Captital
 	private enum ControlState { INITIALISED, READY, INSPECTING };
-	private ControlState state;
+	private ControlState state;  //+MAS: change Variable state to controlState
 	
 	//private library library;--> version-0
 	//After Editing Class names should be Capital
@@ -33,7 +33,7 @@ public class ReturnBookControl {
 		state = ControlState.READY;		
 	}
 
-
+	//MAS: this method returns book reference so should be named getBook()
 	public void bookScanned(int bookId) {
 		if (!state.equals(ControlState.READY)) {
 			throw new RuntimeException("ReturnBookControl: cannot call bookScanned except in READY state");
