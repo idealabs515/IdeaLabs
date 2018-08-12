@@ -110,32 +110,32 @@ public class library implements Serializable {
 	}
 
 	
-	public List<member> Members() {		
-		return new ArrayList<member>(members.values()); 
+	public List<Member> Members() {		
+		return new ArrayList<Member>(members.values()); 
 	}
 
 
-	public List<book> Books() {		
-		return new ArrayList<book>(catalog.values()); 
+	public List<Book> Books() {		
+		return new ArrayList<Book>(catalog.values()); 
 	}
 
 
-	public List<loan> CurrentLoans() {
-		return new ArrayList<loan>(currentLoans.values());
+	public List<Loan> CurrentLoans() {
+		return new ArrayList<Loan>(currentLoans.values());
 	}
 
-
-	public member Add_mem(String lastName, String firstName, String email, int phoneNo) {		
-		member member = new member(lastName, firstName, email, phoneNo, nextMID());
+	//changed Add_Mem to addMember()
+	public Member addMember(String lastName, String firstName, String email, int phoneNo) {		
+		Member member = new Member(lastName, firstName, email, phoneNo, nextMemberID());
 		members.put(member.getId(), member);		
 		return member;
 	}
 
-	
-	public book Add_book(String a, String t, String c) {		
-		book b = new book(a, t, c, nextBID());
-		catalog.put(b.ID(), b);		
-		return b;
+	//changed Add_book to addBook()
+	public Book addBook()(String author, String title, String category) {	 // changed a to author, t to title c to category	
+		Book book = new Book(author, title, category, nextBookID()); //changed b to book
+		catalog.put(Book.ID(), book);		
+		return book;
 	}
 
 	
