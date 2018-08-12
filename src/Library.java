@@ -25,7 +25,7 @@ public class library implements Serializable {
 	private static final double MAX_FINES_OWED = 5.0;
 	private static final double DAMAGE_FEE = 2.0;
 	
-	private static library self;
+	private static Library library;
 	private int bookID; //changed BID to bookID
 	private int memberID; //changed MID to memberID
 	private int loanID; // changed LID to loadID
@@ -38,35 +38,35 @@ public class library implements Serializable {
 	private Map<Integer, Book> damagedBooks;
 	
 
-	private library() {
+	private Library() {
 		catalog = new HashMap<>();
 		members = new HashMap<>();
 		loans = new HashMap<>();
 		currentLoans = new HashMap<>();
 		damagedBooks = new HashMap<>();
-		BID = 1;
-		MID = 1;		
-		LID = 1;		
+		bookID = 1;
+		memberID = 1;		
+		loanID = 1;		
 	}
 
 	
 	public static synchronized library INSTANCE() {		
-		if (self == null) {
+		if (library == null) {
 			Path path = Paths.get(LIBRARY_FILE);			
 			if (Files.exists(path)) {	
-				try (ObjectInputStream lof = new ObjectInputStream(new FileInputStream(LIBRARY_FILE));) {
-			    
-					self = (library) lof.readObject();
-					Calendar.getInstance().setDate(self.loadDate);
-					lof.close();
+				try (ObjectInputStream libraryFile = new ObjectInputStream(new FileInputStream(LIBRARY_FILE));) {
+			    // changed lof variable with libraryFile
+					library = (Library) libraryFile.readObject();
+					Calendar.getInstance().setDate(library.loadDate);
+					libraryFile.close();
 				}
 				catch (Exception e) {
 					throw new RuntimeException(e);
 				}
 			}
-			else self = new library();
+			else library = new Library();
 		}
-		return self;
+		return library;
 	}
 
 	
