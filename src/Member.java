@@ -1,5 +1,5 @@
 /**
-Version-1.0
+Version-1.1
 @Editer:ChittyVaishnavReddy
 
 */
@@ -19,8 +19,8 @@ public class Member implements Serializable {
 	private int id;
 	private double fines;
 	
-	//+HC type loan must start with capital case 
-	private Map<Integer, loan> loans;
+	//Type loan must start with capital case 
+	private Map<Integer, Loan> loans;
 
 	//Changed the constructer to Capital case
 	public Member(String lastName, String firstName, String email, int phoneNo, int id) {
@@ -59,10 +59,10 @@ public class Member implements Serializable {
 
 	
 	//Edited as per naming conventions 
-	//+HC type loan must start with capital case 
-	public List<loan> getLoans() {
-		//+HC type loan must start with capital case 
-		return new ArrayList<loan>(loans.values());
+	//Type loan must start with capital case 
+	public List<Loan> getLoans() {
+		//Type loan must start with capital case 
+		return new ArrayList<Loan>(loans.values());
 	}
 
 	
