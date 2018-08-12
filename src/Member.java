@@ -19,6 +19,7 @@ public class Member implements Serializable {
 	private int id;
 	private double fines;
 	
+	//+HC type loan must start with capital case 
 	private Map<Integer, loan> loans;
 
 	//Changed the constructer to Capital case
@@ -58,7 +59,9 @@ public class Member implements Serializable {
 
 	
 	//Edited as per naming conventions 
+	//+HC type loan must start with capital case 
 	public List<loan> getLoans() {
+		//+HC type loan must start with capital case 
 		return new ArrayList<loan>(loans.values());
 	}
 
