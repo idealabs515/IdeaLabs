@@ -1,5 +1,5 @@
 /**
-Version-0.2
+Version-1.0
 @Editer:ChittyVaishnavReddy
 
 */
@@ -11,7 +11,7 @@ import java.util.Map;
 
 @SuppressWarnings("serial")//Classname starts with capital-case
 public class Member implements Serializable {
-    //Edited as naming conventions make no sense
+    //Edited as per naming conventions 
 	private String lastName;
 	private String firstName;
 	private String email;
@@ -21,7 +21,7 @@ public class Member implements Serializable {
 	
 	private Map<Integer, loan> loans;
 
-	
+	//Changed the constructer to Capital case
 	public Member(String lastName, String firstName, String email, int phoneNo, int id) {
 		this.lastName = lastName;
 		this.firstName = firstName;
@@ -33,6 +33,7 @@ public class Member implements Serializable {
 	}
 
 	
+	//Edited as per naming conventions 
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("Member:  ").append(id).append("\n")
@@ -50,27 +51,32 @@ public class Member implements Serializable {
 	}
 
 	
+	//Edited as per naming conventions 
 	public int getId() {
-		return ID;
+		return id;
 	}
 
 	
+	//Edited as per naming conventions 
 	public List<loan> getLoans() {
 		return new ArrayList<loan>(loans.values());
 	}
 
 	
+	//Edited as per naming conventions (LNS->loans)
 	public int getNumberOfCurrentLoans() {
 		return loans.size();
 	}
 
 	
+	//Edited as per naming conventions (FINES->fines)
 	public double getFinesOwed() {
 		return fines;
 	}
 
 	
-	public void takeOutLoan(loan loan) {
+	//Edited as per naming conventions (loan->Loan)
+	public void takeOutLoan(Loan loan) {
 		if (!loans.containsKey(loan.getId())) {
 			loans.put(loan.getId(), loan);
 		}
@@ -80,39 +86,43 @@ public class Member implements Serializable {
 	}
 
 	
+	//Edited as per naming conventions 
 	public String getLastName() {
 		return lastName;
 	}
 
-	
+	//Edited as per naming conventions 
 	public String getFirstName() {
 		return firstName;
 	}
 
 
+	//Edited as per naming conventions 
 	public void addFine(double fine) {
 		fines += fine;
 	}
 	
+	//Edited as per naming conventions 
 	public double payFine(double amount) {
 		if (amount < 0) {
 			throw new RuntimeException("Member.payFine: amount must be positive");
 		}
 		double change = 0;
-		if (amount > FINES) {
-			change = amount - FINES;
-			FINES = 0;
+		if (amount > fines) {
+			change = amount - fines;
+			fines = 0;
 		}
 		else {
-			FINES -= amount;
+			fines -= amount;
 		}
 		return change;
 	}
 
-
-	public void dischargeLoan(loan loan) {
-		if (LNS.containsKey(loan.getId())) {
-			LNS.remove(loan.getId());
+	
+        //Edited as per naming conventions 
+	public void dischargeLoan(Loan loan) {
+		if (loans.containsKey(loan.getId())) {
+			loans.remove(loan.getId());
 		}
 		else {
 			throw new RuntimeException("No such loan held by member");
