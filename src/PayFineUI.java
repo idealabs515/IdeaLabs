@@ -1,16 +1,22 @@
 import java.util.Scanner;
-
+//@author Bikram Shrestha
 
 public class PayFineUI {
 
     //enum name changed from UI_STATE to UserInterfaceState.	
-	public static enum UserInterfaceState { INITIALISED, READY, PAYING, COMPLETED, CANCELLED };
+	public static enum UserInterfaceState { 
+		INITIALISED,
+		READY, 
+		PAYING, 
+		COMPLETED, 
+		CANCELLED 
+	}; 				//Formatting edited.
 
 	private PayFineControl control;
 	private Scanner input;
 	private UserInterfaceState state;
 
-	
+	// Constructor for PayFineUI
 	public PayFineUI(PayFineControl control) {
 		this.control = control;
 		input = new Scanner(System.in);
