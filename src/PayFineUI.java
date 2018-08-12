@@ -36,15 +36,15 @@ public class PayFineUI {
 		while (true) {
 			
 			switch (state) {
-			
+			// Changed memStr to memberInputForId for code clearity.
 			case READY:
-				String memStr = input("Swipe member card (press <enter> to cancel): ");
-				if (memStr.length() == 0) {
+				String memberInputForId = input("Swipe member card (press <enter> to cancel): ");
+				if (memberInputForId.length() == 0) {
 					control.cancel();
 					break;
 				}
 				try {
-					int memberId = Integer.valueOf(memStr).intValue();
+					int memberId = Integer.valueOf(memberInputForId).intValue();
 					control.cardSwiped(memberId);
 				}
 				catch (NumberFormatException e) {
