@@ -51,16 +51,16 @@ public class PayFineUI {
 					output("Invalid memberId");
 				}
 				break;
-				
+			// Changed amtStr to amountInputForPay	
 			case PAYING:
 				double amount = 0;
-				String amtStr = input("Enter amount (<Enter> cancels) : ");
-				if (amtStr.length() == 0) {
+				String amountInputForPay = input("Enter amount (<Enter> cancels) : ");
+				if (amountInputForPay.length() == 0) {
 					control.cancel();
 					break;
 				}
 				try {
-					amount = Double.valueOf(amtStr).doubleValue();
+					amount = Double.valueOf(amountInputForPay).doubleValue();
 				}
 				catch (NumberFormatException e) {}
 				if (amount <= 0) {
