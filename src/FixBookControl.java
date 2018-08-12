@@ -28,12 +28,12 @@ public class FixBookControl {
 		controlState = ControlState.READY;		
 	}
 
-	//method bookScanned changed to getBook
+	//method bookScanned changed to getBook // There is getBook() method in Library so may be bookScanned was better.
 	public void getBook(int bookId) {
 		if (!controlState.equals(ControlState.READY)) {
 			throw new RuntimeException("FixBookControl: cannot call bookScanned except in READY state");
 		}	
-		currentBook = library.setBook(bookId);
+		currentBook = library.setBook(bookId); //There is no setBook in library So change it ot getBook().
 		
 		if (currentBook == null) {
 			fixBookUI.display("Invalid bookId");
