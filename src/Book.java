@@ -14,7 +14,7 @@ public class Book implements Serializable {
 		RESERVED 
 	};
 	
-	
+	//@review Still need to change variable names
 	//T renamed to title
 	private String T;
 	//A renamed to author
