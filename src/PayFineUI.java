@@ -13,13 +13,13 @@ public class PayFineUI {
 	}; 				//Formatting edited.
 
 	private PayFineControl control;
-	private Scanner input;
+	private Scanner userInput; //Changed input to userInput
 	private UserInterfaceState state;
 
 	// Constructor for PayFineUI
 	public PayFineUI(PayFineControl control) {
 		this.control = control;
-		input = new Scanner(System.in);
+		userInput = new Scanner(System.in);
 		state = UserInterfaceState.INITIALISED;
 		control.setUI(this);
 	}
@@ -89,7 +89,7 @@ public class PayFineUI {
 	
 	private String input(String prompt) {
 		System.out.print(prompt);
-		return input.nextLine();
+		return userInput.nextLine();
 	}	
 		
 		
