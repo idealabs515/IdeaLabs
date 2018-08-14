@@ -1,26 +1,34 @@
 import java.util.Scanner;
-
+//@author Bikram Shrestha
+//@Reviewer: Muhammad Ahmed Shoaib
+//@Mediator: Vaishnav Reddy Chitty
 
 public class PayFineUI {
 
     //enum name changed from UI_STATE to UserInterfaceState.	
-	public static enum UserInterfaceState { INITIALISED, READY, PAYING, COMPLETED, CANCELLED };
+	public static enum UserInterfaceState { 
+		INITIALISED,
+		READY, 
+		PAYING, 
+		COMPLETED, 
+		CANCELLED 
+	}; 				//Formatting edited.
 
 	private PayFineControl control;
-	private Scanner input;
-	private UserInterfaceState state;
+	private Scanner userInput; //Changed input to userInput
+	private UserInterfaceState userInterfaceState; //Variable state was changed to userInterfaceState.
 
-	
+	// Constructor for PayFineUI
 	public PayFineUI(PayFineControl control) {
 		this.control = control;
-		input = new Scanner(System.in);
-		state = UserInterfaceState.INITIALISED;
+		userInput = new Scanner(System.in);
+		userInterfaceState = UserInterfaceState.INITIALISED;
 		control.setUI(this);
 	}
 	
 	
-	public void setState(UserInterfaceState state) {
-		this.state = state;
+	public void setState(UserInterfaceState userInterfaceState) { //Variable state was changed to userInterfaceState.
+		this.userInterfaceState = userInterfaceState;
 	}
 
 
@@ -29,34 +37,38 @@ public class PayFineUI {
 		
 		while (true) {
 			
-			switch (state) {
-			
+			switch (userInterfaceState) { //Variable state was changed to userInterfaceState.
+			// Changed memStr to memberInputForId for code clearity.
 			case READY:
-				String memStr = input("Swipe member card (press <enter> to cancel): ");
-				if (memStr.length() == 0) {
+				String memberInputForId = input("Swipe member card (press <enter> to cancel): ");
+				if (memberInputForId.length() == 0) {
 					control.cancel();
 					break;
 				}
+
 				try {
-					int memberId = Integer.valueOf(memStr).intValue();
+					int memberId = Integer.valueOf(memberInputForId).intValue();
 					control.cardSwiped(memberId);
 				}
-				catch (NumberFormatException e) {
+				catch (NumberFormatException e) { 
 					output("Invalid memberId");
 				}
+
 				break;
-				
+			// Changed amtStr to amountInputForPay	
 			case PAYING:
 				double amount = 0;
-				String amtStr = input("Enter amount (<Enter> cancels) : ");
-				if (amtStr.length() == 0) {
+				String amountInputForPay = input("Enter amount (<Enter> cancels) : ");
+				if (amountInputForPay.length() == 0) {
 					control.cancel();
 					break;
 				}
+
 				try {
-					amount = Double.valueOf(amtStr).doubleValue();
+					amount = Double.valueOf(amountInputForPay).doubleValue();
 				}
-				catch (NumberFormatException e) {}
+				catch (NumberFormatException e) {} 
+				
 				if (amount <= 0) {
 					output("Amount must be positive");
 					break;
@@ -74,7 +86,7 @@ public class PayFineUI {
 			
 			default:
 				output("Unhandled state");
-				throw new RuntimeException("FixBookUI : unhandled state :" + state);			
+				throw new RuntimeException("FixBookUI : unhandled state :" + userInterfaceState);	//Variable state was changed to userInterfaceState.		
 			
 			}		
 		}		
@@ -83,7 +95,7 @@ public class PayFineUI {
 	
 	private String input(String prompt) {
 		System.out.print(prompt);
-		return input.nextLine();
+		return userInput.nextLine();
 	}	
 		
 		
