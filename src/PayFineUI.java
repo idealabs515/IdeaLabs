@@ -1,5 +1,6 @@
 import java.util.Scanner;
 //@author Bikram Shrestha
+//@Reviewer: Muhammad Ahmed Shoaib
 
 public class PayFineUI {
 
@@ -14,7 +15,7 @@ public class PayFineUI {
 
 	private PayFineControl control;
 	private Scanner userInput; //Changed input to userInput
-	private UserInterfaceState state;
+	private UserInterfaceState state; //MAS: Change variable state to interfaceState or uiState it makes more sense.
 
 	// Constructor for PayFineUI
 	public PayFineUI(PayFineControl control) {
@@ -25,7 +26,7 @@ public class PayFineUI {
 	}
 	
 	
-	public void setState(UserInterfaceState state) {
+	public void setState(UserInterfaceState state) { //MAS: Change variable state to interfaceState or uiState it makes more sense.
 		this.state = state;
 	}
 
@@ -47,7 +48,7 @@ public class PayFineUI {
 					int memberId = Integer.valueOf(memberInputForId).intValue();
 					control.cardSwiped(memberId);
 				}
-				catch (NumberFormatException e) {
+				catch (NumberFormatException e) { //MAS: Change variable e to exception 
 					output("Invalid memberId");
 				}
 				break;
@@ -62,7 +63,7 @@ public class PayFineUI {
 				try {
 					amount = Double.valueOf(amountInputForPay).doubleValue();
 				}
-				catch (NumberFormatException e) {}
+				catch (NumberFormatException e) {} //MAS: Change variable e to exception
 				if (amount <= 0) {
 					output("Amount must be positive");
 					break;
