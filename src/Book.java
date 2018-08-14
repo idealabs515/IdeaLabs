@@ -14,15 +14,14 @@ public class Book implements Serializable {
 		RESERVED 
 	};
 	
-	//@review Still need to change variable names
 	//T renamed to title
-	private String T;
+	private String title;
 	//A renamed to author
-	private String A;
+	private String author;
 	//C renamed to callNo
-	private String C;
+	private String callNo;
 	//ID renamed to id
-	private int ID;
+	private int id;
 	
 
 	//STATE type renamed to State
