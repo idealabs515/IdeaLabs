@@ -7,11 +7,11 @@ import java.util.Scanner;
 
 public class Main {
 	
-	private static Scanner IN;
-	private static Library LIB; //changed library to Library
+	private static Scanner INPUT; //changed IN to INPUT
+	private static Library LIBRARY; //changed library to Library
 	private static String MENU;
-	private static Calendar CAL;
-	private static SimpleDateFormat dateFormat; // changed SDF to dateFormat
+	private static Calendar CALENDER; //changed CAL to CALENDER
+	private static SimpleDateFormat DATEFORMAT; // changed SDF to DATEFORMAT
 	
 	
 	private static String getMenu() { //changed method name from Get_Menu to getMenu
