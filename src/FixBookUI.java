@@ -1,19 +1,21 @@
 import java.util.Scanner;
-
+//Author: Muhammad Ahmed Shoaib
+//Reviewer:
+//Moderator: 
 
 public class FixBookUI {
 
-	public static enum UI_STATE { INITIALISED, READY, FIXING, COMPLETED };
+	public static enum UISTATE { INITIALISED, READY, FIXING, COMPLETED }; //Changed UI_STATE to UISTATE
 
 	private FixBookControl control;
 	private Scanner input;
-	private UI_STATE state;
+	private UISTATE uiState; //changed state to uiState
 
-	
+	//constructor
 	public FixBookUI(FixBookControl control) {
 		this.control = control;
 		input = new Scanner(System.in);
-		state = UI_STATE.INITIALISED;
+		uiState = UISTATE.INITIALISED;
 		control.setUI(this);
 	}
 
