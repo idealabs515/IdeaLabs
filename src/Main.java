@@ -42,29 +42,29 @@ public class Main {
 
 	public static void main(String[] args) {		
 		try {			
-			IN = new Scanner(System.in);
-			LIB = library.INSTANCE();
-			CAL = Calendar.getInstance();
-			SDF = new SimpleDateFormat("dd/MM/yyyy");
+			INPUT = new Scanner(System.in);
+			LIBRARY = Library.INSTANCE();
+			CALENDER = Calendar.getInstance();
+			DATEFORMAT = new SimpleDateFormat("dd/mm/yyyy");
 	
-			for (member m : LIB.Members()) {
-				output(m);
+			for (Member member : LIBRARY.Members()) { //changed variable m to member
+				output(member);
 			}
 			output(" ");
-			for (book b : LIB.Books()) {
-				output(b);
+			for (Book book : LIBRARY.Books()) { //changed variable b to book
+				output(book);
 			}
 						
-			MENU = Get_menu();
+			MENU = getMenu();
 			
-			boolean e = false;
+			boolean exit = false; //changed e to exit
 			
-			while (!e) {
+			while (!exit) {
 				
-				output("\n" + SDF.format(CAL.Date()));
-				String c = input(MENU);
+				output("\n" + DATEFORMAT.format(CALENDER.Date()));
+				String choice = input(MENU); //changed variable c to choice
 				
-				switch (c.toUpperCase()) {
+				switch (choice.toUpperCase()) {
 				
 				case "M": 
 					addMember();
@@ -107,7 +107,7 @@ public class Main {
 					break;
 					
 				case "Q": 
-					e = true;
+					exit = true;
 					break;
 					
 				default: 
@@ -115,10 +115,10 @@ public class Main {
 					break;
 				}
 				
-				library.SAVE();
+				Library.SAVE();
 			}			
-		} catch (RuntimeException e) {
-			output(e);
+		} catch (RuntimeException exception) { //changed variable name e to exception
+			output(exception);
 		}		
 		output("\nEnded\n");
 	}	
