@@ -1,14 +1,19 @@
+/**
+Canlendar.java
+@editer : ChittyVaishnavReddy
+*/
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 public class Calendar {
 	
 	private static Calendar self;
-	private static java.util.Calendar cal;
+	//changing from cal to customCalendar
+	private static java.util.Calendar customCalendar;
 	
 	
 	private Calendar() {
-		cal = java.util.Calendar.getInstance();
+		customCalendar = java.util.Calendar.getInstance();
 	}
 	
 	public static Calendar getInstance() {
@@ -19,7 +24,7 @@ public class Calendar {
 	}
 	
 	public void incrementDate(int days) {
-		cal.add(java.util.Calendar.DATE, days);		
+		customCalendar.add(java.util.Calendar.DATE, days);		
 	}
 	
 	public synchronized void setDate(Date date) {
