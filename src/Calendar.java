@@ -1,7 +1,7 @@
 /**
 Canlendar.java
 @editer : ChittyVaishnavReddy
-@version:0.3
+@version:0.4
 */
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
@@ -40,6 +40,8 @@ public class Calendar {
 			throw new RuntimeException(e);
 		}	
 	}
+	
+	//changed date() to getDate() and worked on indentaion 
 	public synchronized Date getDate() {
 		try {
 	                customCalendar.set(java.util.Calendar.HOUR_OF_DAY, 0);  
@@ -53,11 +55,12 @@ public class Calendar {
 		}	
 	}
 
+	//changed date() to getDate()
 	public synchronized Date getDueDate(int loanPeriod) {
-		Date now = Date();
-		cal.add(java.util.Calendar.DATE, loanPeriod);
-		Date dueDate = cal.getTime();
-		cal.setTime(now);
+		Date now = getDate();
+		customCalendar.add(java.util.Calendar.DATE, loanPeriod);
+		Date dueDate = customCalendar.getTime();
+		customCalendar.setTime(now);
 		return dueDate;
 	}
 	
