@@ -1,3 +1,6 @@
+//Author: Muhammad Ahmed Shoaib
+//Reviewer:
+//Moderator:
 import java.text.SimpleDateFormat;
 import java.util.Scanner;
 
@@ -5,16 +8,16 @@ import java.util.Scanner;
 public class Main {
 	
 	private static Scanner IN;
-	private static library LIB;
+	private static Library LIB; //changed library to Library
 	private static String MENU;
 	private static Calendar CAL;
-	private static SimpleDateFormat SDF;
+	private static SimpleDateFormat dateFormat; // changed SDF to dateFormat
 	
 	
-	private static String Get_menu() {
-		StringBuilder sb = new StringBuilder();
+	private static String getMenu() { //changed method name from Get_Menu to getMenu
+ 		StringBuilder stringBuilder = new StringBuilder(); //changed sb to stringBuilder
 		
-		sb.append("\nLibrary Main Menu\n\n")
+		stringBuilder.append("\nLibrary Main Menu\n\n")
 		  .append("  M  : add member\n")
 		  .append("  LM : list members\n")
 		  .append("\n")
@@ -33,7 +36,7 @@ public class Main {
 		  .append("\n")
 		  .append("Choice : ");
 		  
-		return sb.toString();
+		return stringBuilder.toString();
 	}
 
 
@@ -120,7 +123,8 @@ public class Main {
 		output("\nEnded\n");
 	}	
 
-		private static void payFine() {
+	
+	private static void payFine() {
 		new PayFineUI(new PayFineControl()).run();		
 	}
 
