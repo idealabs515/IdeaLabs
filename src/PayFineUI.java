@@ -15,19 +15,19 @@ public class PayFineUI {
 
 	private PayFineControl control;
 	private Scanner userInput; //Changed input to userInput
-	private UserInterfaceState state; //MAS: Change variable state to interfaceState or uiState it makes more sense.
+	private UserInterfaceState userInterfaceState; //Variable state was changed to userInterfaceState.
 
 	// Constructor for PayFineUI
 	public PayFineUI(PayFineControl control) {
 		this.control = control;
 		userInput = new Scanner(System.in);
-		state = UserInterfaceState.INITIALISED;
+		userInterfaceState = UserInterfaceState.INITIALISED;
 		control.setUI(this);
 	}
 	
 	
-	public void setState(UserInterfaceState state) { //MAS: Change variable state to interfaceState or uiState it makes more sense.
-		this.state = state;
+	public void setState(UserInterfaceState userInterfaceState) { //Variable state was changed to userInterfaceState.
+		this.userInterfaceState = userInterfaceState;
 	}
 
 
@@ -36,7 +36,7 @@ public class PayFineUI {
 		
 		while (true) {
 			
-			switch (state) {
+			switch (userInterfaceState) { //Variable state was changed to userInterfaceState.
 			// Changed memStr to memberInputForId for code clearity.
 			case READY:
 				String memberInputForId = input("Swipe member card (press <enter> to cancel): ");
@@ -81,7 +81,7 @@ public class PayFineUI {
 			
 			default:
 				output("Unhandled state");
-				throw new RuntimeException("FixBookUI : unhandled state :" + state);			
+				throw new RuntimeException("FixBookUI : unhandled state :" + userInterfaceState);	//Variable state was changed to userInterfaceState.		
 			
 			}		
 		}		
