@@ -1,6 +1,6 @@
 //Author: Muhammad Ahmed Shoaib
 //Reviewer:
-//Moderator:
+//Mediator:
 import java.text.SimpleDateFormat;
 import java.util.Scanner;
 
@@ -131,7 +131,7 @@ public class Main {
 
 	private static void listCurrentLoans() {
 		output("");
-		for (loan loan : LIB.CurrentLoans()) {
+		for (Loan loan : LIBRARY.CurrentLoans()) {
 			output(loan + "\n");
 		}		
 	}
@@ -140,7 +140,7 @@ public class Main {
 
 	private static void listBooks() {
 		output("");
-		for (book book : LIB.Books()) {
+		for (Book book : LIBRARY.Books()) {
 			output(book + "\n");
 		}		
 	}
@@ -149,7 +149,7 @@ public class Main {
 
 	private static void listMembers() {
 		output("");
-		for (member member : LIB.Members()) {
+		for (Member member : LIBRARY.Members()) { //capitalized Member
 			output(member + "\n");
 		}		
 	}
@@ -174,11 +174,11 @@ public class Main {
 	private static void incrementDate() {
 		try {
 			int days = Integer.valueOf(input("Enter number of days: ")).intValue();
-			CAL.incrementDate(days);
-			LIB.checkCurrentLoans();
-			output(SDF.format(CAL.Date()));
+			CALENDER.incrementDate(days);
+			LIBRARY.checkCurrentLoans();
+			output(DATEFORMAT.format(CALENDER.Date()));
 			
-		} catch (NumberFormatException e) {
+		} catch (NumberFormatException exception) { //changed variable name exception
 			 output("\nInvalid number of days\n");
 		}
 	}
@@ -189,7 +189,7 @@ public class Main {
 		String author = input("Enter author: ");
 		String title  = input("Enter title: ");
 		String callNo = input("Enter call number: ");
-		book book = LIB.Add_book(author, title, callNo);
+		Book book = LIBRARY.addBook(author, title, callNo); //changed method name Add_Book to addBook()
 		output("\n" + book + "\n");
 		
 	}
@@ -201,10 +201,10 @@ public class Main {
 			String firstName  = input("Enter first name: ");
 			String email = input("Enter email: ");
 			int phoneNo = Integer.valueOf(input("Enter phone number: ")).intValue();
-			member member = LIB.Add_mem(lastName, firstName, email, phoneNo);
+			Member member = LIBRARY.addMember(lastName, firstName, email, phoneNo);
 			output("\n" + member + "\n");
 			
-		} catch (NumberFormatException e) {
+		} catch (NumberFormatException exception) {
 			 output("\nInvalid phone number\n");
 		}
 		
