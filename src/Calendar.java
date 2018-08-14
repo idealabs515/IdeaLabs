@@ -1,7 +1,7 @@
 /**
 Canlendar.java
 @editer : ChittyVaishnavReddy
-@version:0.2
+@version:0.3
 */
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
@@ -40,12 +40,12 @@ public class Calendar {
 			throw new RuntimeException(e);
 		}	
 	}
-	public synchronized Date Date() {
+	public synchronized Date getDate() {
 		try {
-	                cal.set(java.util.Calendar.HOUR_OF_DAY, 0);  
-	        cal.set(java.util.Calendar.MINUTE, 0);  
-	        cal.set(java.util.Calendar.SECOND, 0);  
-	        cal.set(java.util.Calendar.MILLISECOND, 0);
+	                customCalendar.set(java.util.Calendar.HOUR_OF_DAY, 0);  
+	                customCalendar.set(java.util.Calendar.MINUTE, 0);  
+	                customCalendar.set(java.util.Calendar.SECOND, 0);  
+	                customCalendar.set(java.util.Calendar.MILLISECOND, 0);
 			return cal.getTime();
 		}
 		catch (Exception e) {
