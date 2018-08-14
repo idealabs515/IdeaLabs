@@ -1,6 +1,6 @@
 //Author : Muhammad Ahmed Shoaib
 //Reviewer :Chitty Vaishnav Reddy 
-// Moderator: 
+// Moderator: Husayin
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
@@ -64,7 +64,9 @@ public class library implements Serializable {
 					throw new RuntimeException(e);
 				}
 			}
-			else library = new Library();//@Review else should be put in {}
+			else {
+				library = new Library();
+			}
 		}
 		return library;
 	}
@@ -84,13 +86,13 @@ public class library implements Serializable {
 		}
 	}
 
-	//@Review method name starts small-case
-	public int BookID() {
+	
+	public int bookID() {
 		return bookID;
 	}
 	
-	//@Review method name starts small-case
-	public int MemberID() {
+	
+	public int memberID() {
 		return memberID;
 	}
 	
