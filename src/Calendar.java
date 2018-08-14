@@ -64,10 +64,11 @@ public class Calendar {
 		return dueDate;
 	}
 	
+	//changed date() to getDate()
 	public synchronized long getDaysDifference(Date targetDate) {
-		long diffMillis = Date().getTime() - targetDate.getTime();
-	    long diffDays = TimeUnit.DAYS.convert(diffMillis, TimeUnit.MILLISECONDS);
-	    return diffDays;
+		long diffMillis = getDate().getTime() - targetDate.getTime();
+	        long diffDays = TimeUnit.DAYS.convert(diffMillis, TimeUnit.MILLISECONDS);
+	        return diffDays;
 	}
 
 }
