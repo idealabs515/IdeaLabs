@@ -1,6 +1,7 @@
 import java.util.Scanner;
 //@author Bikram Shrestha
 //@Reviewer: Muhammad Ahmed Shoaib
+//@Mediator: Vaishnav Reddy Chitty
 
 public class PayFineUI {
 
@@ -44,13 +45,15 @@ public class PayFineUI {
 					control.cancel();
 					break;
 				}
+
 				try {
 					int memberId = Integer.valueOf(memberInputForId).intValue();
 					control.cardSwiped(memberId);
 				}
-				catch (NumberFormatException e) { //MAS: Change variable e to exception 
+				catch (NumberFormatException e) { 
 					output("Invalid memberId");
 				}
+
 				break;
 			// Changed amtStr to amountInputForPay	
 			case PAYING:
@@ -60,10 +63,12 @@ public class PayFineUI {
 					control.cancel();
 					break;
 				}
+
 				try {
 					amount = Double.valueOf(amountInputForPay).doubleValue();
 				}
-				catch (NumberFormatException e) {} //MAS: Change variable e to exception
+				catch (NumberFormatException e) {} 
+				
 				if (amount <= 0) {
 					output("Amount must be positive");
 					break;
