@@ -5,13 +5,14 @@ public class BorrowBookUI {
 	
 	public static enum UI_STATE { INITIALISED, READY, RESTRICTED, SCANNING, IDENTIFIED, FINALISING, COMPLETED, CANCELLED };
 
-	private BorrowBookControl control;
+	//control renamed to borrowBookControl
+	private BorrowBookControl borrowBookControl;
 	private Scanner input;
 	private UI_STATE state;
 
 	
 	public BorrowBookUI(BorrowBookControl control) {
-		this.control = control;
+		this.borrowBookControl = control;
 		input = new Scanner(System.in);
 		state = UI_STATE.INITIALISED;
 		control.setUI(this);
@@ -49,12 +50,14 @@ public class BorrowBookUI {
 			case READY:
 				String memStr = input("Swipe member card (press <enter> to cancel): ");
 				if (memStr.length() == 0) {
-					control.cancel();
+					//control renamed to borrowBookControl
+					borrowBookControl.cancel();
 					break;
 				}
 				try {
 					int memberId = Integer.valueOf(memStr).intValue();
-					control.Swiped(memberId);
+					//control renamed to borrowBookControl
+					borrowBookControl.Swiped(memberId);
 				}
 				catch (NumberFormatException e) {
 					output("Invalid Member Id");
@@ -64,19 +67,22 @@ public class BorrowBookUI {
 				
 			case RESTRICTED:
 				input("Press <any key> to cancel");
-				control.cancel();
+				//control renamed to borrowBookControl
+				borrowBookControl.cancel();
 				break;
 			
 				
 			case SCANNING:
 				String bookStr = input("Scan Book (<enter> completes): ");
 				if (bookStr.length() == 0) {
-					control.Complete();
+					//control renamed to borrowBookControl
+					borrowBookControl.Complete();
 					break;
 				}
 				try {
 					int bookId = Integer.valueOf(bookStr).intValue();
-					control.Scanned(bookId);
+					//control renamed to borrowBookControl
+					borrowBookControl.Scanned(bookId);
 					
 				} catch (NumberFormatException e) {
 					output("Invalid Book Id");
@@ -87,10 +93,12 @@ public class BorrowBookUI {
 			case FINALISING:
 				String ans = input("Commit loans? (Y/N): ");
 				if (ans.toUpperCase().equals("N")) {
-					control.cancel();
+					//control renamed to borrowBookControl
+					borrowBookControl.cancel();
 					
 				} else {
-					control.commitLoans();
+					//control renamed to borrowBookControl
+					borrowBookControl.commitLoans();
 					input("Press <any key> to complete ");
 				}
 				break;
