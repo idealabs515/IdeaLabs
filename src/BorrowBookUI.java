@@ -11,7 +11,8 @@ public class BorrowBookUI {
 	private UI_STATE state;
 
 	
-	public BorrowBookUI(BorrowBookControl control) {
+	//parameter control renamed to borrowBookControl
+	public BorrowBookUI(BorrowBookControl borrowBookControl) {
 		this.borrowBookControl = control;
 		input = new Scanner(System.in);
 		state = UI_STATE.INITIALISED;
