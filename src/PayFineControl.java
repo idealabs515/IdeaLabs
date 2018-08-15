@@ -1,8 +1,14 @@
 public class PayFineControl {
 	
 	private PayFineUI ui;
-	private enum ControlState { INITIALISED, READY, PAYING, COMPLETED, CANCELLED }; //CONTROL_STATE changed to ControlState
-	private ControlState state;
+	private enum ControlState { //CONTROL_STATE changed to ControlState
+		INITIALISED, 
+		READY, 
+		PAYING, 
+		COMPLETED, 
+		CANCELLED 
+		}; 						//Code formatted for clearity.
+	private ControlState state; //CONTROL_STATE changed to ControlState
 	
 	private Library library;	//library changed to Library as Class name has been renamed.
 	private Member member;;		// member changed to Member as Class name has been renamed.
