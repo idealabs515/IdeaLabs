@@ -140,18 +140,18 @@ public class library implements Serializable {
 		return book;
 	}
 
-	//@Review: if condition missing {}
 	public Member getMember(int memberId) {
-		if (members.containsKey(memberId)) 
+		if (members.containsKey(memberId)) {
 			return members.get(memberId);
+		}
 		return null;
 	}
 
 	// changed method book to getBook()
-	//@Review: if condition missing {}
 	public Book getBook(int bookId) {
-		if (catalog.containsKey(bookId)) 
-			return catalog.get(bookId);		
+		if (catalog.containsKey(bookId)) {
+			return catalog.get(bookId);
+		}
 		return null;
 	}
 
@@ -160,17 +160,19 @@ public class library implements Serializable {
 		return LOAN_LIMIT;
 	}
 
-	//@Review: if condition missing {} and for loop too
 	public boolean memberCanBorrow(Member member) {		
-		if (member.getNumberOfCurrentLoans() == LOAN_LIMIT ) 
+		if (member.getNumberOfCurrentLoans() == LOAN_LIMIT ) {
 			return false;
-				
-		if (member.getFinesOwed() >= MAX_FINES_OWED) 
+		}		
+		if (member.getFinesOwed() >= MAX_FINES_OWED) {
 			return false;
+		}
 				
-		for (Loan loan : member.getLoans()) 
-			if (loan.isOverDue()) 
+		for (Loan loan : member.getLoans()) {
+			if (loan.isOverDue()) {
 				return false;
+			}
+		}
 			
 		return true;
 	}
