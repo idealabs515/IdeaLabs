@@ -14,11 +14,11 @@ public class BorrowBookUI {
 	
 	//parameter control renamed to borrowBookControl
 	public BorrowBookUI(BorrowBookControl borrowBookControl) {
-		this.borrowBookControl = control;
+		this.borrowBookControl = borrowBookControl;
 		input = new Scanner(System.in);
 		//state renamed to uiState
 		uiState = UI_STATE.INITIALISED;
-		control.setUI(this);
+		borrowBookControl.setUI(this);
 	}
 
 	
@@ -32,8 +32,10 @@ public class BorrowBookUI {
 		System.out.println(object);
 	}
 	
+	
+	//method setState renamed to setUiState
 	//parameter state renamed to uiState		
-	public void setState(UI_STATE uiState) {
+	public void setUiState(UI_STATE uiState) {
 		//state renamed to uiState
 		this.uiState = uiState;
 	}
