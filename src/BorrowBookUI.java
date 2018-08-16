@@ -8,14 +8,16 @@ public class BorrowBookUI {
 	//control renamed to borrowBookControl
 	private BorrowBookControl borrowBookControl;
 	private Scanner input;
-	private UI_STATE state;
+	//state renamed to uiState
+	private UI_STATE uiState;
 
 	
 	//parameter control renamed to borrowBookControl
 	public BorrowBookUI(BorrowBookControl borrowBookControl) {
 		this.borrowBookControl = control;
 		input = new Scanner(System.in);
-		state = UI_STATE.INITIALISED;
+		//state renamed to uiState
+		uiState = UI_STATE.INITIALISED;
 		control.setUI(this);
 	}
 
@@ -30,9 +32,10 @@ public class BorrowBookUI {
 		System.out.println(object);
 	}
 	
-			
-	public void setState(UI_STATE state) {
-		this.state = state;
+	//parameter state renamed to uiState		
+	public void setState(UI_STATE uiState) {
+		//state renamed to uiState
+		this.uiState = uiState;
 	}
 
 	
@@ -40,8 +43,8 @@ public class BorrowBookUI {
 		output("Borrow Book Use Case UI\n");
 		
 		while (true) {
-			
-			switch (state) {			
+			//state renamed to uiState
+			switch (uiState) {			
 			
 			case CANCELLED:
 				output("Borrowing Cancelled");
@@ -112,7 +115,8 @@ public class BorrowBookUI {
 				
 			default:
 				output("Unhandled state");
-				throw new RuntimeException("BorrowBookUI : unhandled state :" + state);			
+				//state renamed to uiState
+				throw new RuntimeException("BorrowBookUI : unhandled state :" + uiState);			
 			}
 		}		
 	}
