@@ -28,7 +28,8 @@ public class PayFineControl {
 			throw new RuntimeException("PayFineControl: cannot call setUI except in INITIALISED state");
 		}	
 		this.payFineUI = payFineUI;
-		payFineUI.setState(PayFineUI.UI_STATE.READY);
+		//UI_STATE changed to UserInterface to reflect change made in PayFineUI.java
+		payFineUI.setState(PayFineUI.UserInterfaceState.READY); 
 		state = ControlState.READY;		//CONTROL_STATE changed to ControlState
 	}
 
@@ -44,13 +45,15 @@ public class PayFineControl {
 			return;
 		}
 		payFineUI.display(member.toString());
-		payFineUI.setState(PayFineUI.UI_STATE.PAYING);
+		//UI_STATE changed to UserInterface to reflect change made in PayFineUI.java
+		payFineUI.setState(PayFineUI.UserInterfaceState.PAYING);
 		state = ControlState.PAYING; //CONTROL_STATE changed to ControlState
 	}
 	
 	
 	public void cancel() {
-		payFineUI.setState(PayFineUI.UI_STATE.CANCELLED);
+		//UI_STATE changed to UserInterface to reflect change made in PayFineUI.java
+		payFineUI.setState(PayFineUI.UserInterfaceState.CANCELLED);
 		state = ControlState.CANCELLED; //CONTROL_STATE changed to ControlState
 	}
 
@@ -64,7 +67,8 @@ public class PayFineControl {
 			payFineUI.display(String.format("Change: $%.2f", change));
 		}
 		payFineUI.display(member.toString());
-		payFineUI.setState(PayFineUI.UI_STATE.COMPLETED);
+		//UI_STATE changed to UserInterface to reflect change made in PayFineUI.java
+		payFineUI.setState(PayFineUI.UserInterfaceState.COMPLETED);
 		state = ControlState.COMPLETED; //CONTROL_STATE changed to ControlState
 		return change;
 	}
