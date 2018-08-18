@@ -1,5 +1,5 @@
 //Author: Muhammad Ahmed Shoaib
-//Reviewer:
+//Reviewer: Bikram Shrestha
 //Mediator:
 import java.text.SimpleDateFormat;
 import java.util.Scanner;
@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class Main {
 	
-	private static Scanner INPUT; //changed IN to INPUT
+	private static Scanner INPUT; //changed IN to INPUT //Bikram Please change all the variable name to small INPUT, LIBRARY, MENU, CALENDER and DATEFORMAT
 	private static Library LIBRARY; //changed library to Library
 	private static String MENU;
 	private static Calendar CALENDER; //changed CAL to CALENDER
