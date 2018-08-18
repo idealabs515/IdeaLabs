@@ -11,8 +11,8 @@ public class PayFineControl {
 		COMPLETED, 
 		CANCELLED 
 		}; 						//Code formatted for clearity.
-	//+HC it would be better to rename variable state to controlState
-	private ControlState state; //CONTROL_STATE changed to ControlState
+	//Variable state renamed to controlState
+	private ControlState controlState; //CONTROL_STATE changed to ControlState
 	
 	private Library library;	//library changed to Library as Class name has been renamed.
 	//+HC there is two semicolumns at the end of the following line
@@ -21,23 +21,27 @@ public class PayFineControl {
 
 	public PayFineControl() {
 		this.library = library.INSTANCE();
-		state = ControlState.INITIALISED; //CONTROL_STATE changed to ControlState
+		//Variable state renamed to controlState
+		controlState = ControlState.INITIALISED; //CONTROL_STATE changed to ControlState
 	}
 	
-	//+HC it would be better to rename method setUI to setPayFineUI
-	public void setUI(PayFineUI payFineUI) {
-		if (!state.equals(ControlState.INITIALISED)) { //CONTROL_STATE changed to ControlState
-			throw new RuntimeException("PayFineControl: cannot call setUI except in INITIALISED state");
+	//Method setUI renamed setPayFineUI
+	public void setPayFineUI(PayFineUI payFineUI) {
+		//Variable state renamed to controlState
+		if (!controlState.equals(ControlState.INITIALISED)) { //CONTROL_STATE changed to ControlState
+			throw new RuntimeException("PayFineControl: cannot call setPayFineUI except in INITIALISED state");
 		}	
 		this.payFineUI = payFineUI;
 		//UI_STATE changed to UserInterface to reflect change made in PayFineUI.java
 		payFineUI.setState(PayFineUI.UserInterfaceState.READY); 
-		state = ControlState.READY;		//CONTROL_STATE changed to ControlState
+		//Variable state renamed to controlState
+		controlState = ControlState.READY;		//CONTROL_STATE changed to ControlState
 	}
 
 
 	public void cardSwiped(int memberId) {
-		if (!state.equals(ControlState.READY)) { //CONTROL_STATE changed to ControlState
+		//Variable state renamed to controlState
+		if (!controlState.equals(ControlState.READY)) { //CONTROL_STATE changed to ControlState
 			throw new RuntimeException("PayFineControl: cannot call cardSwiped except in READY state");
 		}	
 		member = library.getMember(memberId);
@@ -49,19 +53,22 @@ public class PayFineControl {
 		payFineUI.display(member.toString());
 		//UI_STATE changed to UserInterface to reflect change made in PayFineUI.java
 		payFineUI.setState(PayFineUI.UserInterfaceState.PAYING);
-		state = ControlState.PAYING; //CONTROL_STATE changed to ControlState
+		//Variable state renamed to controlState
+		controlState = ControlState.PAYING; //CONTROL_STATE changed to ControlState
 	}
 	
 	
 	public void cancel() {
 		//UI_STATE changed to UserInterface to reflect change made in PayFineUI.java
 		payFineUI.setState(PayFineUI.UserInterfaceState.CANCELLED);
-		state = ControlState.CANCELLED; //CONTROL_STATE changed to ControlState
+		//Variable state renamed to controlState
+		controlState = ControlState.CANCELLED; //CONTROL_STATE changed to ControlState
 	}
 
 
 	public double payFine(double amount) {
-		if (!state.equals(ControlState.PAYING)) { //CONTROL_STATE changed to ControlState
+		//Variable state renamed to controlState
+		if (!controlState.equals(ControlState.PAYING)) { //CONTROL_STATE changed to ControlState
 			throw new RuntimeException("PayFineControl: cannot call payFine except in PAYING state");
 		}	
 		double change = member.payFine(amount);
@@ -71,7 +78,8 @@ public class PayFineControl {
 		payFineUI.display(member.toString());
 		//UI_STATE changed to UserInterface to reflect change made in PayFineUI.java
 		payFineUI.setState(PayFineUI.UserInterfaceState.COMPLETED);
-		state = ControlState.COMPLETED; //CONTROL_STATE changed to ControlState
+		//Variable state renamed to controlState
+		controlState = ControlState.COMPLETED; //CONTROL_STATE changed to ControlState
 		return change;
 	}
 	
