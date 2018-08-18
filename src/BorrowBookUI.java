@@ -30,7 +30,8 @@ public class BorrowBookUI {
 		//state renamed to uiState
 		//enum UI_STATE renamed to UiState
 		uiState = UiState.INITIALISED;
-		borrowBookControl.setUI(this);
+		//setUI changed to setBorrowBookUI
+		borrowBookControl.setBorrowBookUI(this);
 	}
 
 	
@@ -76,7 +77,8 @@ public class BorrowBookUI {
 				try {
 					int memberId = Integer.valueOf(memStr).intValue();
 					//control renamed to borrowBookControl
-					borrowBookControl.Swiped(memberId);
+					//Swiped renamed to swiped
+					borrowBookControl.swiped(memberId);
 				}
 				catch (NumberFormatException e) {
 					output("Invalid Member Id");
@@ -95,13 +97,15 @@ public class BorrowBookUI {
 				String bookStr = input("Scan Book (<enter> completes): ");
 				if (bookStr.length() == 0) {
 					//control renamed to borrowBookControl
-					borrowBookControl.Complete();
+					//Complete renamed to complete
+					borrowBookControl.complete();
 					break;
 				}
 				try {
 					int bookId = Integer.valueOf(bookStr).intValue();
 					//control renamed to borrowBookControl
-					borrowBookControl.Scanned(bookId);
+					//Scanned renamed to scannned
+					borrowBookControl.scanned(bookId);
 					
 				} catch (NumberFormatException e) {
 					output("Invalid Book Id");
