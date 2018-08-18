@@ -1,3 +1,9 @@
+/**
+@Author:ChittyVaishnavReddy
+@Reviewer:
+@Mediater:
+@version:0.2
+*/
 import java.util.Scanner;
 
 
@@ -29,14 +35,14 @@ public class ReturnBookUI {
 				break;
 				
 			case READY:
-				String bookStr = input("Scan Book (<enter> completes): ");
-				if (bookStr.length() == 0) {
+				String bookName = input("Scan Book (<enter> completes): ");
+				if (bookName.length() == 0) {
 					control.scanningComplete();
 				}
 				else {
 					try {
-						int bookId = Integer.valueOf(bookStr).intValue();
-						control.bookScanned(bookId);
+						int returnBookId = Integer.valueOf(bookStr).intValue();
+						control.bookScanned(returnBookId);
 					}
 					catch (NumberFormatException e) {
 						output("Invalid bookId");
@@ -45,9 +51,9 @@ public class ReturnBookUI {
 				break;				
 				
 			case INSPECTING:
-				String ans = input("Is book damaged? (Y/N): ");
+				String answer = input("Is book damaged? (Y/N): ");
 				boolean isDamaged = false;
-				if (ans.toUpperCase().equals("Y")) {					
+				if (answer.toUpperCase().equals("Y")) {					
 					isDamaged = true;
 				}
 				control.dischargeLoan(isDamaged);
