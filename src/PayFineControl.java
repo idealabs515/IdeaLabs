@@ -1,6 +1,9 @@
 public class PayFineControl {
+	//@author: Bikram Shrestha
+	//reviewer: Huseyin Caliskan
+	//Mediator: Muhammad Ahmed Shoaib
 	
-	private PayFineUI ui;
+	private PayFineUI payFineUI; //ui changed to payFineUI
 	private enum ControlState { //CONTROL_STATE changed to ControlState
 		INITIALISED, 
 		READY, 
@@ -20,12 +23,12 @@ public class PayFineControl {
 	}
 	
 	
-	public void setUI(PayFineUI ui) {
+	public void setUI(PayFineUI payFineUI) {
 		if (!state.equals(ControlState.INITIALISED)) { //CONTROL_STATE changed to ControlState
 			throw new RuntimeException("PayFineControl: cannot call setUI except in INITIALISED state");
 		}	
-		this.ui = ui;
-		ui.setState(PayFineUI.UI_STATE.READY);
+		this.payFineUI = payFineUI;
+		payFineUI.setState(PayFineUI.UI_STATE.READY);
 		state = ControlState.READY;		//CONTROL_STATE changed to ControlState
 	}
 
@@ -37,17 +40,17 @@ public class PayFineControl {
 		member = library.getMember(memberId);
 		
 		if (member == null) {
-			ui.display("Invalid Member Id");
+			payFineUI.display("Invalid Member Id");
 			return;
 		}
-		ui.display(member.toString());
-		ui.setState(PayFineUI.UI_STATE.PAYING);
+		payFineUI.display(member.toString());
+		payFineUI.setState(PayFineUI.UI_STATE.PAYING);
 		state = ControlState.PAYING; //CONTROL_STATE changed to ControlState
 	}
 	
 	
 	public void cancel() {
-		ui.setState(PayFineUI.UI_STATE.CANCELLED);
+		payFineUI.setState(PayFineUI.UI_STATE.CANCELLED);
 		state = ControlState.CANCELLED; //CONTROL_STATE changed to ControlState
 	}
 
@@ -58,10 +61,10 @@ public class PayFineControl {
 		}	
 		double change = member.payFine(amount);
 		if (change > 0) {
-			ui.display(String.format("Change: $%.2f", change));
+			payFineUI.display(String.format("Change: $%.2f", change));
 		}
-		ui.display(member.toString());
-		ui.setState(PayFineUI.UI_STATE.COMPLETED);
+		payFineUI.display(member.toString());
+		payFineUI.setState(PayFineUI.UI_STATE.COMPLETED);
 		state = ControlState.COMPLETED; //CONTROL_STATE changed to ControlState
 		return change;
 	}
