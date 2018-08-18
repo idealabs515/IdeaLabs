@@ -11,9 +11,11 @@ public class PayFineControl {
 		COMPLETED, 
 		CANCELLED 
 		}; 						//Code formatted for clearity.
+	//+HC it would be better to rename variable state to controlState
 	private ControlState state; //CONTROL_STATE changed to ControlState
 	
 	private Library library;	//library changed to Library as Class name has been renamed.
+	//+HC there is two semicolumns at the end of the following line
 	private Member member;;		// member changed to Member as Class name has been renamed.
 
 
@@ -22,7 +24,7 @@ public class PayFineControl {
 		state = ControlState.INITIALISED; //CONTROL_STATE changed to ControlState
 	}
 	
-	
+	//+HC it would be better to rename method setUI to setPayFineUI
 	public void setUI(PayFineUI payFineUI) {
 		if (!state.equals(ControlState.INITIALISED)) { //CONTROL_STATE changed to ControlState
 			throw new RuntimeException("PayFineControl: cannot call setUI except in INITIALISED state");
