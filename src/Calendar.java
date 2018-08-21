@@ -1,6 +1,7 @@
 /**
 Canlendar.java
 @editer : ChittyVaishnavReddy
+@Reviewer: Muhammad Ahmed Shoaib
 @version:1.0
 */
 import java.util.Date;
@@ -36,7 +37,7 @@ public class Calendar {
 	                customCalendar.set(java.util.Calendar.SECOND, 0);  
 	                customCalendar.set(java.util.Calendar.MILLISECOND, 0);
 		}
-		catch (Exception e) {
+		catch (Exception e) { //MAS: Changed variable e to exception 
 			throw new RuntimeException(e);
 		}	
 	}
@@ -50,7 +51,7 @@ public class Calendar {
 	                customCalendar.set(java.util.Calendar.MILLISECOND, 0);
 			return cal.getTime();
 		}
-		catch (Exception e) {
+		catch (Exception e) { //MAS: Changed variable e to exception 
 			throw new RuntimeException(e);
 		}	
 	}
