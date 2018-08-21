@@ -7,11 +7,11 @@ import java.util.Scanner;
 
 public class Main {
 	
-	private static Scanner INPUT; //changed IN to INPUT //Bikram Please change all the variable name to small INPUT, LIBRARY, MENU, CALENDER and DATEFORMAT
-	private static Library LIBRARY; //changed library to Library
-	private static String MENU;
-	private static Calendar CALENDER; //changed CAL to CALENDER
-	private static SimpleDateFormat DATEFORMAT; // changed SDF to DATEFORMAT
+	private static Scanner input; //changed IN to INPUT //Bikram Please change all the variable name to small INPUT, LIBRARY, MENU, CALENDER and DATEFORMAT
+	private static Library library; //changed library to Library
+	private static String menu;
+	private static Calendar calender; //changed CAL to CALENDER
+	private static SimpleDateFormat dateFormat; // changed SDF to DATEFORMAT
 	
 	
 	private static String getMenu() { //changed method name from Get_Menu to getMenu
@@ -42,16 +42,16 @@ public class Main {
 
 	public static void main(String[] args) {		
 		try {			
-			INPUT = new Scanner(System.in);
-			LIBRARY = Library.INSTANCE();
-			CALENDER = Calendar.getInstance();
-			DATEFORMAT = new SimpleDateFormat("dd/mm/yyyy");
+			input = new Scanner(System.in);
+			library = Library.INSTANCE();
+			calender = Calendar.getInstance();
+			dateFormat = new SimpleDateFormat("dd/mm/yyyy");
 	
-			for (Member member : LIBRARY.Members()) { //changed variable m to member
+			for (Member member : library.Members()) { //changed variable m to member
 				output(member);
 			}
 			output(" ");
-			for (Book book : LIBRARY.Books()) { //changed variable b to book
+			for (Book book : libaray.Books()) { //changed variable b to book
 				output(book);
 			}
 						
@@ -61,7 +61,7 @@ public class Main {
 			
 			while (!exit) {
 				
-				output("\n" + DATEFORMAT.format(CALENDER.Date()));
+				output("\n" + dateFormat.format(calender.Date()));
 				String choice = input(MENU); //changed variable c to choice
 				
 				switch (choice.toUpperCase()) {
@@ -131,7 +131,7 @@ public class Main {
 
 	private static void listCurrentLoans() {
 		output("");
-		for (Loan loan : LIBRARY.CurrentLoans()) {
+		for (Loan loan : library.CurrentLoans()) {
 			output(loan + "\n");
 		}		
 	}
@@ -140,7 +140,7 @@ public class Main {
 
 	private static void listBooks() {
 		output("");
-		for (Book book : LIBRARY.Books()) {
+		for (Book book : library.Books()) {
 			output(book + "\n");
 		}		
 	}
@@ -149,7 +149,7 @@ public class Main {
 
 	private static void listMembers() {
 		output("");
-		for (Member member : LIBRARY.Members()) { //capitalized Member
+		for (Member member : library.Members()) { //capitalized Member
 			output(member + "\n");
 		}		
 	}
@@ -174,9 +174,9 @@ public class Main {
 	private static void incrementDate() {
 		try {
 			int days = Integer.valueOf(input("Enter number of days: ")).intValue();
-			CALENDER.incrementDate(days);
-			LIBRARY.checkCurrentLoans();
-			output(DATEFORMAT.format(CALENDER.Date()));
+			calender.incrementDate(days);
+			library.checkCurrentLoans();
+			output(dateFormat.format(calender.Date()));
 			
 		} catch (NumberFormatException exception) { //changed variable name exception
 			 output("\nInvalid number of days\n");
@@ -189,7 +189,7 @@ public class Main {
 		String author = input("Enter author: ");
 		String title  = input("Enter title: ");
 		String callNo = input("Enter call number: ");
-		Book book = LIBRARY.addBook(author, title, callNo); //changed method name Add_Book to addBook()
+		Book book = library.addBook(author, title, callNo); //changed method name Add_Book to addBook()
 		output("\n" + book + "\n");
 		
 	}
@@ -201,7 +201,7 @@ public class Main {
 			String firstName  = input("Enter first name: ");
 			String email = input("Enter email: ");
 			int phoneNo = Integer.valueOf(input("Enter phone number: ")).intValue();
-			Member member = LIBRARY.addMember(lastName, firstName, email, phoneNo);
+			Member member = library.addMember(lastName, firstName, email, phoneNo);
 			output("\n" + member + "\n");
 			
 		} catch (NumberFormatException exception) {
