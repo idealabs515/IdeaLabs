@@ -15,8 +15,7 @@ public class PayFineControl {
 	private ControlState controlState; //CONTROL_STATE changed to ControlState
 	
 	private Library library;	//library changed to Library as Class name has been renamed.
-	//+HC there is two semicolumns at the end of the following line
-	private Member member;;		// member changed to Member as Class name has been renamed.
+	private Member member;		// member changed to Member as Class name has been renamed.
 
 
 	public PayFineControl() {
