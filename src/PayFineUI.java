@@ -23,7 +23,8 @@ public class PayFineUI {
 		this.control = control;
 		userInput = new Scanner(System.in);
 		userInterfaceState = UserInterfaceState.INITIALISED;
-		control.setUI(this);
+		// control.setUI(this) changed to control.setPayFineUI(this) to reflect change made on PayFineControl class.
+		control.setPayFineUI(this); 
 	}
 	
 	
