@@ -67,7 +67,7 @@ public class BorrowBookUI {
 				return;
 
 				
-			case READY:
+			case READY:	// Bikram Please consider naming string memStr to something meaningful like memberInputString
 				String memStr = input("Swipe member card (press <enter> to cancel): ");
 				if (memStr.length() == 0) {
 					//control renamed to borrowBookControl
@@ -93,7 +93,7 @@ public class BorrowBookUI {
 				break;
 			
 				
-			case SCANNING:
+			case SCANNING:// Bikram Please consider naming string bookStr to something meaningful like bookInputString
 				String bookStr = input("Scan Book (<enter> completes): ");
 				if (bookStr.length() == 0) {
 					//control renamed to borrowBookControl
@@ -107,7 +107,7 @@ public class BorrowBookUI {
 					//Scanned renamed to scannned
 					borrowBookControl.scanned(bookId);
 					
-				} catch (NumberFormatException e) {
+				} catch (NumberFormatException e) { //Bikram please start catch statement in next line.
 					output("Invalid Book Id");
 				} 
 				break;
@@ -119,7 +119,7 @@ public class BorrowBookUI {
 					//control renamed to borrowBookControl
 					borrowBookControl.cancel();
 					
-				} else {
+				} else {	//Bikram Please look at the formatting and start else in next line
 					//control renamed to borrowBookControl
 					borrowBookControl.commitLoans();
 					input("Press <any key> to complete ");
