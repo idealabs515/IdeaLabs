@@ -50,7 +50,7 @@ public class library implements Serializable {
 	}
 
 	
-	public static synchronized Library INSTANCE() {		
+	public static synchronized Library instance() {	//changed from upper case to lower case	
 		if (library == null) {
 			Path path = Paths.get(LIBRARY_FILE);			
 			if (Files.exists(path)) {	
@@ -60,8 +60,8 @@ public class library implements Serializable {
 					Calendar.getInstance().setDate(library.loadDate);
 					libraryFile.close();
 				}
-				catch (Exception e) {
-					throw new RuntimeException(e);
+				catch (Exception exception) {
+					throw new RuntimeException(exception);
 				}
 			}
 			else {
@@ -72,7 +72,7 @@ public class library implements Serializable {
 	}
 
 	
-	public static synchronized void SAVE() {
+	public static synchronized void save() { //changed from uppercase to lowercase
 		if (library != null) {
 			library.loadDate = Calendar.getInstance().Date();
 			try (ObjectOutputStream libraryFile = new ObjectOutputStream(new FileOutputStream(LIBRARY_FILE));) {
@@ -80,8 +80,8 @@ public class library implements Serializable {
 				libraryFile.flush();
 				libraryFile.close();	
 			}
-			catch (Exception e) {
-				throw new RuntimeException(e);
+			catch (Exception exception) {
+				throw new RuntimeException(exception);
 			}
 		}
 	}
