@@ -51,8 +51,8 @@ public class Calendar {
 	                customCalendar.set(java.util.Calendar.MILLISECOND, 0);
 			return cal.getTime();
 		}
-		catch (Exception e) { //MAS: Changed variable e to exception 
-			throw new RuntimeException(e);
+		catch (Exception exception) { // Changed variable e to exception 
+			throw new RuntimeException(exception);
 		}	
 	}
 
