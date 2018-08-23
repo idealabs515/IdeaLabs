@@ -67,15 +67,18 @@ public class BorrowBookUI {
 				return;
 
 				
-			case READY:	// Bikram Please consider naming string memStr to something meaningful like memberInputString
-				String memStr = input("Swipe member card (press <enter> to cancel): ");
-				if (memStr.length() == 0) {
+			case READY:	
+				//memStr varibale renamed to memberInputString
+				String memberInputString = input("Swipe member card (press <enter> to cancel): ");
+				//memStr renamed to memberInputString
+				if (memberInputString.length() == 0) {
 					//control renamed to borrowBookControl
 					borrowBookControl.cancel();
 					break;
 				}
 				try {
-					int memberId = Integer.valueOf(memStr).intValue();
+					//memStr renamed to memberInputString
+					int memberId = Integer.valueOf(memberInputString).intValue();
 					//control renamed to borrowBookControl
 					//Swiped renamed to swiped
 					borrowBookControl.swiped(memberId);
@@ -93,21 +96,25 @@ public class BorrowBookUI {
 				break;
 			
 				
-			case SCANNING:// Bikram Please consider naming string bookStr to something meaningful like bookInputString
-				String bookStr = input("Scan Book (<enter> completes): ");
-				if (bookStr.length() == 0) {
+			case SCANNING:
+				//bookStr variable renamed to bookInputString
+				String bookInputString = input("Scan Book (<enter> completes): ");
+				//bookStr renamed to bookInputString
+				if (bookInputString.length() == 0) {
 					//control renamed to borrowBookControl
 					//Complete renamed to complete
 					borrowBookControl.complete();
 					break;
 				}
 				try {
-					int bookId = Integer.valueOf(bookStr).intValue();
+					//bookStr renamed to bookInputString
+					int bookId = Integer.valueOf(bookInputString).intValue();
 					//control renamed to borrowBookControl
 					//Scanned renamed to scannned
 					borrowBookControl.scanned(bookId);
 					
-				} catch (NumberFormatException e) { //Bikram please start catch statement in next line.
+				} 
+				catch (NumberFormatException e) { //indentation fix
 					output("Invalid Book Id");
 				} 
 				break;
@@ -119,7 +126,8 @@ public class BorrowBookUI {
 					//control renamed to borrowBookControl
 					borrowBookControl.cancel();
 					
-				} else {	//Bikram Please look at the formatting and start else in next line
+				} 
+				else {	//indentation fix
 					//control renamed to borrowBookControl
 					borrowBookControl.commitLoans();
 					input("Press <any key> to complete ");
