@@ -2,7 +2,7 @@
 Canlendar.java
 @editer : ChittyVaishnavReddy
 @Reviewer: Muhammad Ahmed Shoaib
-@version:1.0
+@version:2.0
 */
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
@@ -37,8 +37,8 @@ public class Calendar {
 	                customCalendar.set(java.util.Calendar.SECOND, 0);  
 	                customCalendar.set(java.util.Calendar.MILLISECOND, 0);
 		}
-		catch (Exception e) { //MAS: Changed variable e to exception 
-			throw new RuntimeException(e);
+		catch (Exception exception) { // Changed variable e to exception 
+			throw new RuntimeException(exception);
 		}	
 	}
 	
