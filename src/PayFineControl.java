@@ -1,62 +1,84 @@
 public class PayFineControl {
+	//@author: Bikram Shrestha
+	//reviewer: Huseyin Caliskan
+	//Mediator: Muhammad Ahmed Shoaib
 	
-	private PayFineUI ui;
-	private enum CONTROL_STATE { INITIALISED, READY, PAYING, COMPLETED, CANCELLED };
-	private CONTROL_STATE state;
+	private PayFineUI payFineUI; //ui changed to payFineUI
+	private enum ControlState { //CONTROL_STATE changed to ControlState
+		INITIALISED, 
+		READY, 
+		PAYING, 
+		COMPLETED, 
+		CANCELLED 
+		}; 						//Code formatted for clearity.
+	//Variable state renamed to controlState
+	private ControlState controlState; //CONTROL_STATE changed to ControlState
 	
-	private library library;
-	private member member;;
+	private Library library;	//library changed to Library as Class name has been renamed.
+	private Member member;		// member changed to Member as Class name has been renamed.
 
 
 	public PayFineControl() {
 		this.library = library.INSTANCE();
-		state = CONTROL_STATE.INITIALISED;
+		//Variable state renamed to controlState
+		controlState = ControlState.INITIALISED; //CONTROL_STATE changed to ControlState
 	}
 	
-	
-	public void setUI(PayFineUI ui) {
-		if (!state.equals(CONTROL_STATE.INITIALISED)) {
-			throw new RuntimeException("PayFineControl: cannot call setUI except in INITIALISED state");
+	//Method setUI renamed setPayFineUI
+	public void setPayFineUI(PayFineUI payFineUI) {
+		//Variable state renamed to controlState
+		if (!controlState.equals(ControlState.INITIALISED)) { //CONTROL_STATE changed to ControlState
+			throw new RuntimeException("PayFineControl: cannot call setPayFineUI except in INITIALISED state");
 		}	
-		this.ui = ui;
-		ui.setState(PayFineUI.UI_STATE.READY);
-		state = CONTROL_STATE.READY;		
+		this.payFineUI = payFineUI;
+		//UI_STATE changed to UserInterface to reflect change made in PayFineUI.java
+		payFineUI.setState(PayFineUI.UserInterfaceState.READY); 
+		//Variable state renamed to controlState
+		controlState = ControlState.READY;		//CONTROL_STATE changed to ControlState
 	}
 
 
 	public void cardSwiped(int memberId) {
-		if (!state.equals(CONTROL_STATE.READY)) {
+		//Variable state renamed to controlState
+		if (!controlState.equals(ControlState.READY)) { //CONTROL_STATE changed to ControlState
 			throw new RuntimeException("PayFineControl: cannot call cardSwiped except in READY state");
 		}	
 		member = library.getMember(memberId);
 		
 		if (member == null) {
-			ui.display("Invalid Member Id");
+			payFineUI.display("Invalid Member Id");
 			return;
 		}
-		ui.display(member.toString());
-		ui.setState(PayFineUI.UI_STATE.PAYING);
-		state = CONTROL_STATE.PAYING;
+		payFineUI.display(member.toString());
+		//UI_STATE changed to UserInterface to reflect change made in PayFineUI.java
+		payFineUI.setState(PayFineUI.UserInterfaceState.PAYING);
+		//Variable state renamed to controlState
+		controlState = ControlState.PAYING; //CONTROL_STATE changed to ControlState
 	}
 	
 	
 	public void cancel() {
-		ui.setState(PayFineUI.UI_STATE.CANCELLED);
-		state = CONTROL_STATE.CANCELLED;
+		//UI_STATE changed to UserInterface to reflect change made in PayFineUI.java
+		payFineUI.setState(PayFineUI.UserInterfaceState.CANCELLED);
+		//Variable state renamed to controlState
+		controlState = ControlState.CANCELLED; //CONTROL_STATE changed to ControlState
 	}
 
 
 	public double payFine(double amount) {
-		if (!state.equals(CONTROL_STATE.PAYING)) {
+		//Variable state renamed to controlState
+		if (!controlState.equals(ControlState.PAYING)) { //CONTROL_STATE changed to ControlState
 			throw new RuntimeException("PayFineControl: cannot call payFine except in PAYING state");
 		}	
 		double change = member.payFine(amount);
 		if (change > 0) {
-			ui.display(String.format("Change: $%.2f", change));
+			payFineUI.display(String.format("Change: $%.2f", change));
 		}
-		ui.display(member.toString());
-		ui.setState(PayFineUI.UI_STATE.COMPLETED);
-		state = CONTROL_STATE.COMPLETED;
+		payFineUI.display(member.toString());
+		//UI_STATE changed to UserInterface to reflect change made in PayFineUI.java
+		payFineUI.setState(PayFineUI.UserInterfaceState.COMPLETED);
+		//Variable state renamed to controlState
+		controlState = ControlState.COMPLETED; //CONTROL_STATE changed to ControlState
 		return change;
 	}
 	
