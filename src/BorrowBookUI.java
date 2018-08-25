@@ -2,19 +2,36 @@ import java.util.Scanner;
 
 
 public class BorrowBookUI {
-	
-	public static enum UI_STATE { INITIALISED, READY, RESTRICTED, SCANNING, IDENTIFIED, FINALISING, COMPLETED, CANCELLED };
+	//enum UI_STATE renamed to UiState
+	public static enum UiState { 
+		INITIALISED, 
+		READY, 		
+		RESTRICTED, 
+		SCANNING, 
+		IDENTIFIED, 
+		FINALISING, 
+		COMPLETED, 
+		CANCELLED 
+	};
+								
 
-	private BorrowBookControl control;
+	//control renamed to borrowBookControl
+	private BorrowBookControl borrowBookControl;
 	private Scanner input;
-	private UI_STATE state;
+	//state renamed to uiState
+	//enum UI_STATE renamed to UiState
+	private UiState uiState;
 
 	
-	public BorrowBookUI(BorrowBookControl control) {
-		this.control = control;
+	//parameter control renamed to borrowBookControl
+	public BorrowBookUI(BorrowBookControl borrowBookControl) {
+		this.borrowBookControl = borrowBookControl;
 		input = new Scanner(System.in);
-		state = UI_STATE.INITIALISED;
-		control.setUI(this);
+		//state renamed to uiState
+		//enum UI_STATE renamed to UiState
+		uiState = UiState.INITIALISED;
+		//setUI changed to setBorrowBookUI
+		borrowBookControl.setBorrowBookUI(this);
 	}
 
 	
@@ -28,9 +45,13 @@ public class BorrowBookUI {
 		System.out.println(object);
 	}
 	
-			
-	public void setState(UI_STATE state) {
-		this.state = state;
+	
+	//method setState renamed to setUiState
+	//parameter state renamed to uiState
+	//enum UI_STATE renamed to UiState
+	public void setUiState(UiState uiState) {
+		//state renamed to uiState
+		this.uiState = uiState;
 	}
 
 	
@@ -38,23 +59,29 @@ public class BorrowBookUI {
 		output("Borrow Book Use Case UI\n");
 		
 		while (true) {
-			
-			switch (state) {			
+			//state renamed to uiState
+			switch (uiState) {			
 			
 			case CANCELLED:
 				output("Borrowing Cancelled");
 				return;
 
 				
-			case READY:
-				String memStr = input("Swipe member card (press <enter> to cancel): ");
-				if (memStr.length() == 0) {
-					control.cancel();
+			case READY:	
+				//memStr varibale renamed to memberInputString
+				String memberInputString = input("Swipe member card (press <enter> to cancel): ");
+				//memStr renamed to memberInputString
+				if (memberInputString.length() == 0) {
+					//control renamed to borrowBookControl
+					borrowBookControl.cancel();
 					break;
 				}
 				try {
-					int memberId = Integer.valueOf(memStr).intValue();
-					control.Swiped(memberId);
+					//memStr renamed to memberInputString
+					int memberId = Integer.valueOf(memberInputString).intValue();
+					//control renamed to borrowBookControl
+					//Swiped renamed to swiped
+					borrowBookControl.swiped(memberId);
 				}
 				catch (NumberFormatException e) {
 					output("Invalid Member Id");
@@ -64,21 +91,30 @@ public class BorrowBookUI {
 				
 			case RESTRICTED:
 				input("Press <any key> to cancel");
-				control.cancel();
+				//control renamed to borrowBookControl
+				borrowBookControl.cancel();
 				break;
 			
 				
 			case SCANNING:
-				String bookStr = input("Scan Book (<enter> completes): ");
-				if (bookStr.length() == 0) {
-					control.Complete();
+				//bookStr variable renamed to bookInputString
+				String bookInputString = input("Scan Book (<enter> completes): ");
+				//bookStr renamed to bookInputString
+				if (bookInputString.length() == 0) {
+					//control renamed to borrowBookControl
+					//Complete renamed to complete
+					borrowBookControl.complete();
 					break;
 				}
 				try {
-					int bookId = Integer.valueOf(bookStr).intValue();
-					control.Scanned(bookId);
+					//bookStr renamed to bookInputString
+					int bookId = Integer.valueOf(bookInputString).intValue();
+					//control renamed to borrowBookControl
+					//Scanned renamed to scannned
+					borrowBookControl.scanned(bookId);
 					
-				} catch (NumberFormatException e) {
+				} 
+				catch (NumberFormatException e) { //indentation fix
 					output("Invalid Book Id");
 				} 
 				break;
@@ -87,10 +123,13 @@ public class BorrowBookUI {
 			case FINALISING:
 				String ans = input("Commit loans? (Y/N): ");
 				if (ans.toUpperCase().equals("N")) {
-					control.cancel();
+					//control renamed to borrowBookControl
+					borrowBookControl.cancel();
 					
-				} else {
-					control.commitLoans();
+				} 
+				else {	//indentation fix
+					//control renamed to borrowBookControl
+					borrowBookControl.commitLoans();
 					input("Press <any key> to complete ");
 				}
 				break;
@@ -103,7 +142,8 @@ public class BorrowBookUI {
 				
 			default:
 				output("Unhandled state");
-				throw new RuntimeException("BorrowBookUI : unhandled state :" + state);			
+				//state renamed to uiState
+				throw new RuntimeException("BorrowBookUI : unhandled state :" + uiState);			
 			}
 		}		
 	}
