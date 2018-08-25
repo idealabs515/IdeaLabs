@@ -1,6 +1,6 @@
 //Author: Muhammad Ahmed Shoaib
 //Reviewer: Bikram Shrestha
-//Mediator:
+//Mediator: Chitty Vaishnav Reddy
 import java.text.SimpleDateFormat;
 import java.util.Scanner;
 
