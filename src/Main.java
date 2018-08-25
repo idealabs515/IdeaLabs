@@ -43,7 +43,7 @@ public class Main {
 	public static void main(String[] args) {		
 		try {			
 			input = new Scanner(System.in);
-			library = Library.INSTANCE();
+			library = Library.instance();
 			calender = Calendar.getInstance();
 			dateFormat = new SimpleDateFormat("dd/mm/yyyy");
 	
@@ -115,7 +115,7 @@ public class Main {
 					break;
 				}
 				
-				Library.SAVE();
+				Library.save();
 			}			
 		} catch (RuntimeException exception) { //changed variable name e to exception
 			output(exception);
