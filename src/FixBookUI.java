@@ -1,7 +1,7 @@
 import java.util.Scanner;
 //Author: Muhammad Ahmed Shoaib
-//Reviewer:
-//Moderator: 
+//Reviewer: Bikram
+//Moderator: Vaishnav
 
 public class FixBookUI {
 
