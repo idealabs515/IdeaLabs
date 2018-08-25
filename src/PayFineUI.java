@@ -1,22 +1,24 @@
 import java.util.Scanner;
-//@author Bikram Shrestha
-//@Reviewer: Muhammad Ahmed Shoaib
-//@Mediator: Vaishnav Reddy Chitty
+
+// Author Bikram Shrestha
+// Reviewer: Muhammad Ahmed Shoaib
+// Mediator: Vaishnav Reddy Chitty
 
 public class PayFineUI {
 
-    //enum name changed from UI_STATE to UserInterfaceState.	
+    // enum name changed from UI_STATE to UserInterfaceState.	
 	public static enum UserInterfaceState { 
 		INITIALISED,
 		READY, 
 		PAYING, 
 		COMPLETED, 
 		CANCELLED 
-	}; 				//Formatting edited.
+	};												// Formatting edited.
 
 	private PayFineControl control;
-	private Scanner userInput; //Changed input to userInput
-	private UserInterfaceState userInterfaceState; //Variable state was changed to userInterfaceState.
+	private Scanner userInput;						// Changed input to userInput
+	private UserInterfaceState userInterfaceState;	// Variable state was changed to userInterfaceState.
+
 
 	// Constructor for PayFineUI
 	public PayFineUI(PayFineControl control) {
@@ -28,7 +30,7 @@ public class PayFineUI {
 	}
 	
 	
-	public void setState(UserInterfaceState userInterfaceState) { //Variable state was changed to userInterfaceState.
+	public void setState(UserInterfaceState userInterfaceState) {	// Variable state was changed to userInterfaceState.
 		this.userInterfaceState = userInterfaceState;
 	}
 
@@ -54,12 +56,11 @@ public class PayFineUI {
 				catch (NumberFormatException e) { 
 					output("Invalid memberId");
 				}
-
 				break;
-			// Changed amtStr to amountInputForPay	
+
 			case PAYING:
 				double amount = 0;
-				String amountInputForPay = input("Enter amount (<Enter> cancels) : ");
+				String amountInputForPay = input("Enter amount (<Enter> cancels) : ");		// Changed amtStr to amountInputForPay	
 				if (amountInputForPay.length() == 0) {
 					control.cancel();
 					break;
@@ -87,8 +88,7 @@ public class PayFineUI {
 			
 			default:
 				output("Unhandled state");
-				throw new RuntimeException("FixBookUI : unhandled state :" + userInterfaceState);	//Variable state was changed to userInterfaceState.		
-			
+				throw new RuntimeException("FixBookUI : unhandled state :" + userInterfaceState);	// Variable state was changed to userInterfaceState.		
 			}		
 		}		
 	}
@@ -108,6 +108,4 @@ public class PayFineUI {
 	public void display(Object object) {
 		output(object);
 	}
-
-
 }
