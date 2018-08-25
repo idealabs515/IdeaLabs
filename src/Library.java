@@ -50,7 +50,7 @@ public class library implements Serializable {
 	}
 
 	
-	public static synchronized Library INSTANCE() {		
+	public static synchronized Library instance() {	//changed from upper case to lower case	
 		if (library == null) {
 			Path path = Paths.get(LIBRARY_FILE);			
 			if (Files.exists(path)) {	
@@ -60,8 +60,8 @@ public class library implements Serializable {
 					Calendar.getInstance().setDate(library.loadDate);
 					libraryFile.close();
 				}
-				catch (Exception e) {
-					throw new RuntimeException(e);
+				catch (Exception exception) {
+					throw new RuntimeException(exception);
 				}
 			}
 			else {
@@ -72,7 +72,7 @@ public class library implements Serializable {
 	}
 
 	
-	public static synchronized void SAVE() {
+	public static synchronized void save() { //changed from uppercase to lowercase
 		if (library != null) {
 			library.loadDate = Calendar.getInstance().Date();
 			try (ObjectOutputStream libraryFile = new ObjectOutputStream(new FileOutputStream(LIBRARY_FILE));) {
@@ -80,8 +80,8 @@ public class library implements Serializable {
 				libraryFile.flush();
 				libraryFile.close();	
 			}
-			catch (Exception e) {
-				throw new RuntimeException(e);
+			catch (Exception exception) {
+				throw new RuntimeException(exception);
 			}
 		}
 	}
@@ -140,17 +140,18 @@ public class library implements Serializable {
 		return book;
 	}
 
-	
 	public Member getMember(int memberId) {
-		if (members.containsKey(memberId)) 
+		if (members.containsKey(memberId)) {
 			return members.get(memberId);
+		}
 		return null;
 	}
 
 	// changed method book to getBook()
 	public Book getBook(int bookId) {
-		if (catalog.containsKey(bookId)) 
-			return catalog.get(bookId);		
+		if (catalog.containsKey(bookId)) {
+			return catalog.get(bookId);
+		}
 		return null;
 	}
 
@@ -159,17 +160,19 @@ public class library implements Serializable {
 		return LOAN_LIMIT;
 	}
 
-	
 	public boolean memberCanBorrow(Member member) {		
-		if (member.getNumberOfCurrentLoans() == LOAN_LIMIT ) 
+		if (member.getNumberOfCurrentLoans() == LOAN_LIMIT ) {
 			return false;
-				
-		if (member.getFinesOwed() >= MAX_FINES_OWED) 
+		}		
+		if (member.getFinesOwed() >= MAX_FINES_OWED) {
 			return false;
+		}
 				
-		for (Loan loan : member.getLoans()) 
-			if (loan.isOverDue()) 
+		for (Loan loan : member.getLoans()) {
+			if (loan.isOverDue()) {
 				return false;
+			}
+		}
 			
 		return true;
 	}

@@ -1,7 +1,7 @@
 import java.util.Scanner;
 //Author: Muhammad Ahmed Shoaib
-//Reviewer:
-//Moderator: 
+//Reviewer: Bikram
+//Moderator: Vaishnav
 
 public class FixBookUI {
 
@@ -20,8 +20,8 @@ public class FixBookUI {
 	}
 
 
-	public void setState(UI_STATE state) {
-		this.state = state;
+	public void setState(UISTATE uiState) { //UISTATE
+		this.uiState = uiState;
 	}
 
 	
@@ -30,31 +30,31 @@ public class FixBookUI {
 		
 		while (true) {
 			
-			switch (state) {
+			switch (uiState) {
 			
 			case READY:
-				String bookStr = input("Scan Book (<enter> completes): ");
-				if (bookStr.length() == 0) {
+				String bookString = input("Scan Book (<enter> completes): ");
+				if (bookString.length() == 0) {
 					control.scanningComplete();
 				}
 				else {
 					try {
-						int bookId = Integer.valueOf(bookStr).intValue();
+						int bookId = Integer.valueOf(bookString).intValue();
 						control.bookScanned(bookId);
 					}
-					catch (NumberFormatException e) {
+					catch (NumberFormatException exception) { //changed e to exception 
 						output("Invalid bookId");
 					}
 				}
 				break;	
 				
 			case FIXING:
-				String ans = input("Fix Book? (Y/N) : ");
-				boolean fix = false;
-				if (ans.toUpperCase().equals("Y")) {
-					fix = true;
+				String choice = input("Fix Book? (Y/N) : ");
+				boolean isFixed = false;
+				if (choice.toUpperCase().equals("Y")) {
+					isFixed = true;
 				}
-				control.fixBook(fix);
+				control.fixBook(isFixed);
 				break;
 								
 			case COMPLETED:
@@ -63,7 +63,7 @@ public class FixBookUI {
 			
 			default:
 				output("Unhandled state");
-				throw new RuntimeException("FixBookUI : unhandled state :" + state);			
+				throw new RuntimeException("FixBookUI : unhandled state :" + uiState);			
 			
 			}		
 		}
