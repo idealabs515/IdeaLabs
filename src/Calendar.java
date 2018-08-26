@@ -1,14 +1,21 @@
+/**
+Canlendar.java
+@editer : ChittyVaishnavReddy
+@Reviewer: Muhammad Ahmed Shoaib
+@version:2.0
+*/
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 public class Calendar {
 	
 	private static Calendar self;
-	private static java.util.Calendar cal;
+	//changing from cal to customCalendar
+	private static java.util.Calendar customCalendar;
 	
 	
 	private Calendar() {
-		cal = java.util.Calendar.getInstance();
+		customCalendar = java.util.Calendar.getInstance();
 	}
 	
 	public static Calendar getInstance() {
@@ -19,46 +26,50 @@ public class Calendar {
 	}
 	
 	public void incrementDate(int days) {
-		cal.add(java.util.Calendar.DATE, days);		
+		customCalendar.add(java.util.Calendar.DATE, days);		
 	}
 	
 	public synchronized void setDate(Date date) {
 		try {
-			cal.setTime(date);
-	        cal.set(java.util.Calendar.HOUR_OF_DAY, 0);  
-	        cal.set(java.util.Calendar.MINUTE, 0);  
-	        cal.set(java.util.Calendar.SECOND, 0);  
-	        cal.set(java.util.Calendar.MILLISECOND, 0);
+			customCalendar.setTime(date);
+	                customCalendar.set(java.util.Calendar.HOUR_OF_DAY, 0);  
+	                customCalendar.set(java.util.Calendar.MINUTE, 0);  
+	                customCalendar.set(java.util.Calendar.SECOND, 0);  
+	                customCalendar.set(java.util.Calendar.MILLISECOND, 0);
 		}
-		catch (Exception e) {
-			throw new RuntimeException(e);
+		catch (Exception exception) { // Changed variable e to exception 
+			throw new RuntimeException(exception);
 		}	
 	}
-	public synchronized Date Date() {
+	
+	//changed date() to getDate() and worked on indentaion 
+	public synchronized Date getDate() {
 		try {
-	        cal.set(java.util.Calendar.HOUR_OF_DAY, 0);  
-	        cal.set(java.util.Calendar.MINUTE, 0);  
-	        cal.set(java.util.Calendar.SECOND, 0);  
-	        cal.set(java.util.Calendar.MILLISECOND, 0);
+	                customCalendar.set(java.util.Calendar.HOUR_OF_DAY, 0);  
+	                customCalendar.set(java.util.Calendar.MINUTE, 0);  
+	                customCalendar.set(java.util.Calendar.SECOND, 0);  
+	                customCalendar.set(java.util.Calendar.MILLISECOND, 0);
 			return cal.getTime();
 		}
-		catch (Exception e) {
-			throw new RuntimeException(e);
+		catch (Exception exception) { // Changed variable e to exception 
+			throw new RuntimeException(exception);
 		}	
 	}
 
+	//changed date() to getDate()
 	public synchronized Date getDueDate(int loanPeriod) {
-		Date now = Date();
-		cal.add(java.util.Calendar.DATE, loanPeriod);
-		Date dueDate = cal.getTime();
-		cal.setTime(now);
+		Date now = getDate();
+		customCalendar.add(java.util.Calendar.DATE, loanPeriod);
+		Date dueDate = customCalendar.getTime();
+		customCalendar.setTime(now);
 		return dueDate;
 	}
 	
+	//changed date() to getDate()
 	public synchronized long getDaysDifference(Date targetDate) {
-		long diffMillis = Date().getTime() - targetDate.getTime();
-	    long diffDays = TimeUnit.DAYS.convert(diffMillis, TimeUnit.MILLISECONDS);
-	    return diffDays;
+		long diffMillis = getDate().getTime() - targetDate.getTime();
+	        long diffDays = TimeUnit.DAYS.convert(diffMillis, TimeUnit.MILLISECONDS);
+	        return diffDays;
 	}
 
 }

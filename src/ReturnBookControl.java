@@ -1,16 +1,17 @@
 /**
 The below File is being edited by Chitty vaishnav Reddy
-@Editor:Chitty Vaishnav Reddy
-@Version-1.1
+@author:Chitty Vaishnav Reddy
+@version-2.0
 */
 //@Reviewer Bikram Shrestha
 //@Moderater Muhammad Ahmed Shoaib
 public class ReturnBookControl {
 
-	private ReturnBookUI ui; //+MAS: change variable ui to returnBookUI
+	private ReturnBookUI returnBookUI; //changed variable ui to returnBookUI
 	//Enum name should be Camel case it was Captital
 	private enum ControlState { INITIALISED, READY, INSPECTING };
-	private ControlState state;  //+MAS: change Variable state to controlState
+	//Changed state to controlState
+	private ControlState controlState;  
 	
 	//private library library;--> version-0
 	//After Editing Class names should be Capital
@@ -18,34 +19,35 @@ public class ReturnBookControl {
 	//After Editing Class names should be Capital
 	private Loan currentLoan;
 	
+	//changed method INSTANCE() to instance() 
 	public ReturnBookControl() {
-		this.library = library.INSTANCE();
-		state = ControlState.INITIALISED;
+		this.library = library.instance();
+		controlState = ControlState.INITIALISED;
 	}
 	
 	
-	public void setUI(ReturnBookUI ui) {
-		if (!state.equals(ControlState.INITIALISED)) {
+	public void setUI(ReturnBookUI returnBookUI) {
+		if (!controlState.equals(ControlState.INITIALISED)) {
 			throw new RuntimeException("ReturnBookControl: cannot call setUI except in INITIALISED state");
 		}	
-		this.ui = ui;
-		ui.setState(ReturnBookUI.UI_STATE.READY);
-		state = ControlState.READY;		
+		this.returnBookUI = returnBookUI;
+		returnBookUI.setState(ReturnBookUI.UI_STATE.READY);
+		controlState = ControlState.READY;		
 	}
 
-	//MAS: this method returns book reference so should be named getBook()
+
 	public void bookScanned(int bookId) {
-		if (!state.equals(ControlState.READY)) {
+		if (!controlState.equals(ControlState.READY)) {
 			throw new RuntimeException("ReturnBookControl: cannot call bookScanned except in READY state");
 		}	
-		book currentBook = library.Book(bookId);
+		book currentBook = library.getBook(bookId);
 		
 		if (currentBook == null) {
-			ui.display("Invalid Book Id");
+			returnBookUI.display("Invalid Book Id");
 			return;
 		}
 		if (!currentBook.onLoan()) { //bikram something is wrong with method name On_loan()//Edited
-			ui.display("Book has not been borrowed");
+			returnBookUI.display("Book has not been borrowed");
 			return;
 		}		
 		currentLoan = library.getLoanByBookId(bookId);	
@@ -53,34 +55,34 @@ public class ReturnBookControl {
 		if (currentLoan.isOverDue()) {
 			overDueFine = library.calculateOverDueFine(currentLoan);
 		}
-		ui.display("Inspecting");
-		ui.display(currentBook.toString());
-		ui.display(currentLoan.toString());
+		returnBookUI.display("Inspecting");
+		returnBookUI.display(currentBook.toString());
+		returnBookUI.display(currentLoan.toString());
 		
 		if (currentLoan.isOverDue()) {
-			ui.display(String.format("\nOverdue fine : $%.2f", overDueFine));
+			returnBookUI.display(String.format("\nOverdue fine : $%.2f", overDueFine));
 		}
-		ui.setState(ReturnBookUI.UI_STATE.INSPECTING);
-		state = ControlState.INSPECTING;		
+		returnBookUI.setState(ReturnBookUI.UI_STATE.INSPECTING);
+		controlState = ControlState.INSPECTING;		
 	}
 
 
 	public void scanningComplete() {
-		if (!state.equals(ControlState.READY)) {
+		if (!controlState.equals(ControlState.READY)) {
 			throw new RuntimeException("ReturnBookControl: cannot call scanningComplete except in READY state");
 		}	
-		ui.setState(ReturnBookUI.UI_STATE.COMPLETED);		
+		returnBookUI.setState(ReturnBookUI.UI_STATE.COMPLETED);		
 	}
 
 
 	public void dischargeLoan(boolean isDamaged) {
-		if (!state.equals(ControlState.INSPECTING)) {
+		if (!controlState.equals(ControlState.INSPECTING)) {
 			throw new RuntimeException("ReturnBookControl: cannot call dischargeLoan except in INSPECTING state");
 		}	
 		library.dischargeLoan(currentLoan, isDamaged);
 		currentLoan = null;
-		ui.setState(ReturnBookUI.UI_STATE.READY);
-		state = ControlState.READY;				
+		returnBookUI.setState(ReturnBookUI.UI_STATE.READY);
+		controlState = ControlState.READY;				
 	}
 
 

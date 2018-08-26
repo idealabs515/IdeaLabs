@@ -1,19 +1,25 @@
+/**
+@Author:ChittyVaishnavReddy
+@Reviewer:M.Ahmed
+@Mediater: Bikram Shrestha
+@version:0.2
+*/
 import java.util.Scanner;
 
 
 public class ReturnBookUI {
 
-	public static enum UI_STATE { INITIALISED, READY, INSPECTING, COMPLETED };
+	public static enum uiState { INITIALISED, READY, INSPECTING, COMPLETED };
 
 	private ReturnBookControl control;
 	private Scanner input;
-	private UI_STATE state;
+	private uiState state;
 
 	
 	public ReturnBookUI(ReturnBookControl control) {
 		this.control = control;
 		input = new Scanner(System.in);
-		state = UI_STATE.INITIALISED;
+		state = uiState.INITIALISED;
 		control.setUI(this);
 	}
 
@@ -28,15 +34,15 @@ public class ReturnBookUI {
 			case INITIALISED:
 				break;
 				
-			case READY:
-				String bookStr = input("Scan Book (<enter> completes): ");
-				if (bookStr.length() == 0) {
+			case READY://changed bookStr to bookName
+				String bookName = input("Scan Book (<enter> completes): ");
+				if (bookName.length() == 0) {
 					control.scanningComplete();
 				}
 				else {
 					try {
-						int bookId = Integer.valueOf(bookStr).intValue();
-						control.bookScanned(bookId);
+						int returnBookId = Integer.valueOf(bookStr).intValue();
+						control.bookScanned(returnBookId);
 					}
 					catch (NumberFormatException e) {
 						output("Invalid bookId");
@@ -45,9 +51,9 @@ public class ReturnBookUI {
 				break;				
 				
 			case INSPECTING:
-				String ans = input("Is book damaged? (Y/N): ");
+				String answer = input("Is book damaged? (Y/N): ");
 				boolean isDamaged = false;
-				if (ans.toUpperCase().equals("Y")) {					
+				if (answer.toUpperCase().equals("Y")) {					
 					isDamaged = true;
 				}
 				control.dischargeLoan(isDamaged);
@@ -79,7 +85,8 @@ public class ReturnBookUI {
 		output(object);
 	}
 	
-	public void setState(UI_STATE state) {
+	
+	public void setState(uiState state) {	
 		this.state = state;
 	}
 
