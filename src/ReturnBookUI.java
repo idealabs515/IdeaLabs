@@ -1,7 +1,7 @@
 /**
 @Author:ChittyVaishnavReddy
 @Reviewer:
-@Mediater:
+@Mediater: Bikram Shrestha
 @version:0.2
 */
 import java.util.Scanner;
@@ -85,7 +85,7 @@ public class ReturnBookUI {
 		output(object);
 	}
 	
-	public void setState(uiState state) {
+	public void setState(uiState state) {	//Bikram please include one more line break before declaring the method.
 		this.state = state;
 	}
 
