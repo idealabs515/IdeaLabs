@@ -1,6 +1,6 @@
 /**
 @Author:ChittyVaishnavReddy
-@Reviewer:
+@Reviewer:M.Ahmed
 @Mediater: Bikram Shrestha
 @version:0.2
 */
@@ -34,7 +34,7 @@ public class ReturnBookUI {
 			case INITIALISED:
 				break;
 				
-			case READY:
+			case READY://changed bookStr to bookName
 				String bookName = input("Scan Book (<enter> completes): ");
 				if (bookName.length() == 0) {
 					control.scanningComplete();
@@ -85,7 +85,8 @@ public class ReturnBookUI {
 		output(object);
 	}
 	
-	public void setState(uiState state) {	//Bikram please include one more line break before declaring the method.
+	
+	public void setState(uiState state) {	
 		this.state = state;
 	}
 
